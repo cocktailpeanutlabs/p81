@@ -16,6 +16,8 @@ Disk Saver starts with Pinokio Home and can also scan folders you choose elsewhe
 
 > **The important safety rule:** scanning only reports opportunities. Pinokio does not deduplicate anything until you review the results and choose a Deduplicate action.
 
+> **The app owns its files; identical files share the bytes.** An app can download a model into its own folder, use it at the path it expects, and lose that path when you delete the app. When another app has identical content, Disk Saver can make the two ordinary app-local paths share one physical copy. You keep normal per-app install and uninstall behavior without paying for the same bytes twice.
+
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 
 [Download Pinokio](https://desktop.pinokio.co/)
@@ -226,7 +228,34 @@ Activity records successful deduplication, separation, and unused-link cleanup e
 
 Disk Saver is most valuable when large, mostly immutable files are copied into several places because different tools expect different directory layouts.
 
-## One model library, many AI apps
+## Disposable app installs without duplicate model storage
+
+This is the central Disk Saver use case. Traditional installers generally make you choose one storage model:
+
+- Let every app own a copy. Install and uninstall behavior stays simple, but identical models consume space repeatedly.
+- Put models in a shared folder or cache and connect apps to it with symlinks or configuration. Storage is shared, but the model is now owned by that central location rather than by any app. Deleting an app does not delete the shared model.
+
+Disk Saver separates **path ownership** from **physical storage**. Each app retains a normal file in its own directory and can be installed, moved, or deleted as a self-contained folder. Behind those paths, byte-identical files can share physical data through hardlinks.
+
+**Example lifecycle:**
+
+1. App A downloads `model.safetensors` into App A's model folder.
+2. App B downloads the identical file into App B's model folder.
+3. Disk Saver verifies both files and deduplicates them. Both app-local paths remain, but the content occupies physical storage once.
+4. Delete App A. Its entire folder and model path disappear; App B still works and the shared content remains through App B's path.
+5. Delete App B. Its path disappears too. Disk Saver can report its now-unneeded private link under **Unused files**, where **Clean up** reclaims the final physical storage after verification.
+
+| Approach | Where apps see the model | Physical storage | What deleting one app does | Make one app independent |
+|---|---|---|---|---|
+| Separate copies | Inside each app | Repeated per app | Deletes that app's copy | Already independent |
+| Shared folder, symlinks, or shared cache | Central location exposed to apps | Shared | Removes the app or its reference, but leaves the centrally owned model | Copy and reconfigure paths |
+| Pinokio Disk Saver | Inside each app | Shared when content is identical | Deletes that app's path; other apps keep working | Click **Make separate** |
+
+This is different from setting `HF_HOME`, which selects the shared root used by the Hugging Face cache. A central cache or shared model folder saves space by moving ownership of the model outside the individual apps. Pinokio Disk Saver does not require that shared-versus-isolated choice: app-owned paths remain isolated at the directory level while verified content is shared at the storage level. See the official [Hugging Face cache documentation](https://huggingface.co/docs/huggingface_hub/main/guides/manage-cache).
+
+The individual ingredients—hardlinks, hashing, and content deduplication—are established filesystem techniques. What is unusual is packaging them into this user-controlled app lifecycle: automatic discovery, exact-content verification, per-app paths, selective deduplication, **Make separate**, and safe cleanup.
+
+## One model, many AI apps
 
 ComfyUI, InvokeAI, image generators, trainers, audio tools, and custom launchers may each download the same checkpoint into their own model directory.
 
@@ -290,7 +319,7 @@ This makes it useful for finding accidental model downloads, diagnosing why a mi
 
 ## Reclaiming leftovers after uninstalling apps
 
-Deleting an app can leave a now-unused private Disk Saver link. The Unused files view makes this visible and lets you reclaim it after verifying that no linked app path remains.
+Deleting an app removes its own folder and model paths normally. If another app still has a hardlink to the same content, that app and the shared bytes remain intact. After the last app path is deleted, Disk Saver may retain a private verified link until the **Unused files** view confirms that it is safe to reclaim.
 
 This turns cleanup into an explicit, auditable step rather than a hidden background deletion.
 
@@ -354,6 +383,12 @@ No. Apps continue to use the same paths.
 ## Does deleting one hardlink delete the others?
 
 No. Deleting a path removes that name. The data remains while another hardlink exists. In-place modification is different: it changes the shared bytes, so separate a writable file first.
+
+## What happens to deduplicated models when I delete an app?
+
+Deleting the app removes its folder and its model paths. Any other app-local hardlinks keep working, so the shared physical data remains for as long as another app uses it. When the final app path is gone, the private Disk Saver link can appear under **Unused files**; **Clean up** removes it after verifying that no managed path still depends on it.
+
+This means app deletion stays app-scoped: you do not accidentally break another app, and you do not have to keep a permanent central model library just to receive deduplication savings.
 
 ## Can it deduplicate across internal and external drives?
 

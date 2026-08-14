@@ -1,0 +1,46 @@
+title: Pinokio 8.1.0
+description: Release notes for Pinokio 8.1.0 Disk Saver
+theme: just-the-docs
+
+url: "https://cocktailpeanutlabs.github.io"
+baseurl: "/p81"
+repository: cocktailpeanutlabs/p81
+
+permalink: pretty
+lang: en-US
+
+color_scheme: pinokio
+search_enabled: false
+nav_enabled: false
+heading_anchors: true
+enable_copy_code_button: true
+
+sass:
+  quiet_deps: true
+  silence_deprecations:
+    - color-functions
+    - global-builtin
+    - import
+
+back_to_top: true
+back_to_top_text: "Back to top"
+footer_content: "Pinokio 8.1.0 release notes"
+last_edit_timestamp: false
+gh_edit_link: false
+
+aux_links:
+  GitHub:
+    - "https://github.com/cocktailpeanutlabs/p81"
+aux_links_new_tab: true
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-include-cache
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/

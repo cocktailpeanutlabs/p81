@@ -14,6 +14,11 @@ section_nav_depth: 2
 
 Pinokio Disk Saver is a decentralized file deduplication system which can save hundreds of gigabytes or even terabytes of your disk space.
 
+Pinokio Disk Saver is a completely automated file deduplication system that lets you save hundreds of gigabytes or even terabytes of your disk space,
+
+1. **Completely automatic:** no need to manually find related files and create symbolic links.
+2. **Decentralized:** no need to require a centralized location for deduplication (such as a `models` folder). All files stay the same location, while being deduplicated automatically.
+
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 
 

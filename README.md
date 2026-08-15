@@ -12,12 +12,17 @@ section_nav_depth: 2
 
 # Pinokio 8.1: Disk Saver
 
-Pinokio Disk Saver is a decentralized file deduplication system which can save hundreds of gigabytes or even terabytes of your disk space.
+Existing AI app launchers save space by imposing a central storage architecture: models are moved into a shared library, then supported apps are redirected to it using symbolic links or app-specific configuration.
 
-Pinokio Disk Saver is a completely automated file deduplication system that lets you save hundreds of gigabytes or even terabytes of your disk space,
+Pinokio Disk Saver takes a different approach. Every app keeps its own files and folder structure, while byte-identical files share one physical copy underneath.
 
-1. **Completely automatic:** no need to manually find related files and create symbolic links.
-2. **Decentralized:** no need to require a centralized location for deduplication (such as a `models` folder). All files stay the same location, while being deduplicated automatically.
+This can recover hundreds of gigabytes or even terabytes of disk space.
+
+1. **Automatic duplicate discovery:** On Windows and macOS, Autoscan checks files created or changed by an app after it stops. No manual file comparisons or symbolic-link maintenance.
+2. **Decentralized:** No central `models` folder or shared cache is required. Files remain at the paths where their apps created them.
+3. **General-purpose:** Disk Saver deduplicates exact files, not just models. It can cover runtimes, packages, caches, archives, Pinokio Home, and other folders you add.
+4. **Reversible:** Any deduplicated file can be restored to an independent copy with **Make separate**.
+5. **Reference-aware cleanup:** Deleting one app does not affect files still used by other apps. After the final external reference disappears, Disk Saver lists the data under **Unused files** for cleanup.
 
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 
@@ -43,8 +48,9 @@ Furthermore, it has an "autoscan" mode (Windows and Mac only) that automatically
 ## Is it safe?
 
 1. **Scan** is read-only, and 100% safe.
-2. **Deduplication**, **Make separate**, or **Clean up** actions DO make changes to your file system.
-3. **Deduplication** and **Make separate** can be safely reverted. Once you deduplicate a file, you can "Make separate" to separate the deduplicate entity back to independent files.
+2. Deduplication is **precisely based on content.** Files are deduplicated only when their contents are exactly identical. Matching filenames or locations are not enough.
+3. **Deduplication**, **Make separate**, or **Clean up** actions DO make changes to your file system.
+4. **Deduplication** and **Make separate** can be safely reverted. Once you deduplicate a file, you can "Make separate" to separate the deduplicate entity back to independent files.
 
 
 [Download Pinokio](https://desktop.pinokio.co/)

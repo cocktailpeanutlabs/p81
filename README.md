@@ -12,7 +12,10 @@ section_nav_depth: 2
 
 # Pinokio 8.1: Disk Saver
 
+Pinokio Disk Saver is a decentralized file deduplication system which can save hundreds of gigabytes or even terabytes of your disk space.
+
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
+
 
 ## Problem
 
@@ -42,8 +45,6 @@ Furthermore, it has an "autoscan" mode (Windows and Mac only) that automatically
 [Download Pinokio](https://desktop.pinokio.co/)
 
 
----
-
 # A safe five-minute test
 
 1. Create a temporary folder on the same drive as Pinokio Home.
@@ -54,9 +55,8 @@ Furthermore, it has an "autoscan" mode (Windows and Mac only) that automatically
 6. Choose **Make separate** and check both files again.
 7. Delete the test files normally, then check **Unused files** for anything reclaimable.
 
----
 
-# Why
+# Use cases
 
 
 Disk Saver is most useful for large files that rarely change but have been copied into several tool-specific folders.
@@ -65,8 +65,8 @@ Disk Saver is most useful for large files that rarely change but have been copie
 
 Without Disk Saver, apps usually handle models in one of two ways:
 
-- Each app keeps its own models. Uninstalling is simple, but every copy takes space.
-- Apps use a central cache or shared folder. This saves space, but deleting an app leaves the shared model behind.
+- **No Deduplication:** Each app keeps its own models. Uninstalling is simple, but every copy takes space.
+- **Centralized Deduplication:** Apps use a central cache or shared folder (for example a `models` folder to store all the common models). This saves space, but deleting an app leaves the shared model behind.
 
 With Disk Saver, each app still sees a normal file in its own folder. Identical files can share the same data underneath.
 

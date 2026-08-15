@@ -50,6 +50,8 @@ Pinokio Disk Saver takes a new, different approach. Every app keeps its own file
 
 This can recover hundreds of gigabytes or even terabytes of disk space.
 
+![saved](media/saved.png)
+
 1. **Automatic duplicate discovery:** On Windows and macOS, Autoscan checks files created or changed by an app after it stops. No manual file comparisons or symbolic-link maintenance.
 2. **Decentralized:** No central `models` folder or shared cache is required. Files remain at the paths where their apps created them.
 3. **No domain-specific logic:** Disk Saver does not need to understand models, packages, runtimes, applications, or folder conventions. It only verifies whether files are byte-identical. New file types, frameworks, and ecosystems require no additional deduplication logic. With **All** selected, this can extend all the way down to individual Python files.

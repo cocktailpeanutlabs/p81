@@ -39,9 +39,20 @@ Furthermore, it has an "autoscan" mode (Windows and Mac only) that automatically
 3. **Deduplication** and **Make separate** can be safely reverted. Once you deduplicate a file, you can "Make separate" to separate the deduplicate entity back to independent files.
 
 
-
 [Download Pinokio](https://desktop.pinokio.co/)
 
+
+---
+
+# A safe five-minute test
+
+1. Create a temporary folder on the same drive as Pinokio Home.
+2. Put two byte-identical disposable files in it. A large model or archive makes the result easy to see.
+3. Add the folder to Disk Saver and scan below the test file's size.
+4. Select one copy under Duplicates and deduplicate it.
+5. Open both paths and compare their checksums.
+6. Choose **Make separate** and check both files again.
+7. Delete the test files normally, then check **Unused files** for anything reclaimable.
 
 ---
 
@@ -354,15 +365,6 @@ Actions use temporary files and atomic replacement where possible. Completed wor
 
 Files must match exactly. Two models with the same architecture, two videos that look identical, or two archives containing the same files do not qualify unless every byte matches.
 
-# A safe five-minute test
-
-1. Create a temporary folder on the same drive as Pinokio Home.
-2. Put two byte-identical disposable files in it. A large model or archive makes the result easy to see.
-3. Add the folder to Disk Saver and scan below the test file's size.
-4. Select one copy under Duplicates and deduplicate it.
-5. Open both paths and compare their checksums.
-6. Choose **Make separate** and check both files again.
-7. Delete the test files normally, then check **Unused files** for anything reclaimable.
 
 # Frequently asked questions
 

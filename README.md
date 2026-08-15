@@ -32,7 +32,7 @@ In Pinokio's left sidebar, find the **Manage** section and click **Disk Saver**.
 
 You can scan **All files, 1 MB+, 10 MB+, 50 MB+, 100 MB+, 500 MB+, or 1 GB+**. Empty files are ignored.
 
-![Completed global Disk Saver scan](media/p81-01-global-overview.jpg)
+![Annotated first Disk Saver scan controls](media/annotated/p81-01-first-scan-annotated.png)
 
 - Start a scan and watch its progress.
 - Cancel it, then start again.
@@ -54,7 +54,7 @@ Each view answers a different question:
 
 Use Search, status and location filters, and the **Folders / Files** switch to narrow the list.
 
-![Duplicates grouped by Pinokio apps and external folders](media/p81-02-duplicates.jpg)
+![Annotated Disk Saver result views and filters](media/annotated/p81-02-result-views-annotated.png)
 
 - Open every view and compare its count with the files shown.
 - Search for part of a file or folder name.
@@ -71,7 +71,7 @@ The scan summary separates what you use now from what you could save:
 
 The numbers update after each action. It is normal for the logical file total to be larger than the physical storage used: several paths can point to the same data.
 
-![Storage bar showing still used, saved, and available savings](media/p81-01-global-overview.jpg)
+![Annotated Disk Saver scan summary](media/annotated/p81-03-scan-summary-annotated.png)
 
 - Note all three values.
 - Deduplicate one test file. **Saved** should rise while **Can save** falls.
@@ -83,7 +83,7 @@ The Duplicates view groups byte-identical files and shows where each match lives
 
 Every path stays in place. Pinokio replaces only the redundant storage with a hardlink to the same verified content.
 
-![A selected duplicate and the Deduplicate selected file action](media/p81-03-deduplicate-selection.jpg)
+![Annotated file selection and Deduplicate action](media/annotated/p81-04-deduplicate-annotated.png)
 
 - Select one disposable duplicate first.
 - The button should show the selection count and expected savings.
@@ -97,7 +97,7 @@ Pinokio may skip a file if it changed after the scan or belongs to a running app
 
 Matching contents are not enough. Files must also have compatible permissions, ownership, filesystems, and locations. Disk Saver puts unsafe matches under **Cannot deduplicate** and tells you why.
 
-![Cannot deduplicate view explaining permission and ownership differences](media/p81-04-cannot-deduplicate.jpg)
+![Annotated Cannot deduplicate view and reason](media/annotated/p81-05-cannot-deduplicate-annotated.png)
 
 - This view should have no bulk Deduplicate action.
 - Every row should give a reason.
@@ -110,7 +110,7 @@ Matching contents are not enough. Files must also have compatible permissions, o
 
 Use it before editing a file in place, making an independent archive, or simply testing the undo path. You may need free space equal to the full file size.
 
-![Deduplicated files with Make separate actions](media/p81-05-make-separate.jpg)
+![Annotated Deduplicated view and Make separate action](media/annotated/p81-06-make-separate-annotated.png)
 
 - Make one disposable deduplicated file separate.
 - Its path and checksum should stay the same.
@@ -124,7 +124,7 @@ Disk Saver keeps a private, verified link to managed content. If all matching ap
 
 Cleanup is conservative: Pinokio only removes an unchanged private link when its link count proves that nothing still depends on it. An empty view with **No cleanup needed** is normal.
 
-![Unused files empty state](media/p81-06-unused-files.jpg)
+![Annotated Unused files view](media/annotated/p81-07-unused-files-annotated.png)
 
 - If unused links exist, review their count and reclaimable size.
 - Clean up one, then try **Clean up all**.
@@ -137,7 +137,7 @@ Choose **Add**, then **Add folder**, to include a model library, download cache,
 
 Removing a location from Disk Saver only stops tracking it. It does not delete the folder.
 
-![Add menu with Add folder and Find more savings](media/p81-07-add-locations.jpg)
+![Annotated Add folder controls](media/annotated/p81-08-add-folder-annotated.png)
 
 - Add a small folder with disposable duplicates.
 - Scan and find it under Other folders.
@@ -148,7 +148,7 @@ Removing a location from Disk Saver only stops tracking it. It does not delete t
 
 After the global scan, choose **Add**, then **Find more savings**, to search your Home folder, another folder, or another drive. Set a minimum size, review the suggestions, and add only the locations you want.
 
-![Choose where to search dialog for Home, another folder, or a drive](media/p81-08-find-more-savings.jpg)
+![Annotated Find more savings dialog](media/annotated/p81-09-find-more-savings-annotated.png)
 
 Hardlinks cannot cross filesystems. Files on an external SSD can share space with each other, but not with a file on the internal drive.
 
@@ -164,7 +164,7 @@ Every installed app has its own Disk Saver page. It shows the app's **Unique**, 
 
 Run the global scan first so Pinokio has a verified set of files to compare against.
 
-![App-specific Disk Saver view for openDAW](media/p81-09-app-disk-saver.jpg)
+![Annotated app-specific Disk Saver summary](media/annotated/p81-10-app-scan-annotated.png)
 
 - Open an app, choose Disk Saver, and scan it.
 - Change its minimum-size setting.
@@ -177,7 +177,7 @@ Set an app's Disk Saver control to **Auto** or **Manual**. In Auto mode, Pinokio
 
 If it finds verified duplicates, the control shows **New**. Opening the result clears that indicator. Auto mode never deduplicates by itself. You still review the files and choose the action.
 
-![Disk Saver Auto mode in an app sidebar](media/p81-11-automatic-app-checking.jpg)
+![Annotated app Disk Saver automatic mode control](media/annotated/p81-11-auto-checking-annotated.png)
 
 - Switch between Auto and Manual, then reopen the app page.
 - In Auto mode, let the app create or download a large duplicate and then stop it.
@@ -189,7 +189,7 @@ If it finds verified duplicates, the control shows **New**. Opening the result c
 
 Activity records successful deduplication, separation, and cleanup, including file counts, sizes, and times. It is an audit trail, not an undo button; use **Make separate** to reverse deduplication.
 
-![Disk Saver activity history](media/p81-10-activity.jpg)
+![Annotated Disk Saver Activity view](media/annotated/p81-12-activity-annotated.png)
 
 - Perform one action of each kind and find all three in Activity.
 - Search Activity, leave the page, and come back. The entries should remain.

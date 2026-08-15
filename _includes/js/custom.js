@@ -116,7 +116,19 @@ jtd.onReady(function () {
     "media/p81-08-find-more-savings.jpg": [1280, 720],
     "media/p81-09-app-disk-saver.jpg": [1280, 720],
     "media/p81-10-activity.jpg": [1280, 720],
-    "media/p81-11-automatic-app-checking.jpg": [1280, 720]
+    "media/p81-11-automatic-app-checking.jpg": [1280, 720],
+    "media/annotated/p81-01-first-scan-annotated.png": [1280, 792],
+    "media/annotated/p81-02-result-views-annotated.png": [1280, 792],
+    "media/annotated/p81-03-scan-summary-annotated.png": [1280, 792],
+    "media/annotated/p81-04-deduplicate-annotated.png": [1280, 792],
+    "media/annotated/p81-05-cannot-deduplicate-annotated.png": [1280, 792],
+    "media/annotated/p81-06-make-separate-annotated.png": [1280, 792],
+    "media/annotated/p81-07-unused-files-annotated.png": [1280, 792],
+    "media/annotated/p81-08-add-folder-annotated.png": [1280, 792],
+    "media/annotated/p81-09-find-more-savings-annotated.png": [1280, 792],
+    "media/annotated/p81-10-app-scan-annotated.png": [1280, 792],
+    "media/annotated/p81-11-auto-checking-annotated.png": [1280, 792],
+    "media/annotated/p81-12-activity-annotated.png": [1280, 792]
   };
 
   var hashScrollState = {

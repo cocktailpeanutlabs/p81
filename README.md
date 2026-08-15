@@ -1,25 +1,41 @@
 ---
 layout: minimal
 title: Pinokio 8.1.0
-description: Pinokio 8.1 Disk Saver release notes and testing guide
+description: Pinokio 8.1 Universal Disk Saver release notes and testing guide
 permalink: /
 has_toc: false
 render_with_liquid: false
 section_nav_depth: 2
 ---
 
-<img class="release-hero" src="media/p81-disk-saver-hero.png" alt="Pinokio 8.1 Disk Saver fusion mark">
+<img class="release-hero" src="media/p81-disk-saver-stack-clean.png" alt="Pinokio 8.1 Universal Disk Saver stack spanning AI applications, package ecosystems, and operating systems" width="1920" height="1080">
 
-# Pinokio 8.1: Disk Saver
+# Pinokio 8.1: Universal Disk Saver
 
 ## Problem
 
-**Who doesn't want to save disk space?** As we install a lot of AI apps we get inundated with a lot of redundant files--redundant AI model files, redundant runtimes, redunant library/package files, and so on. You will be shocked to find out how much disk space you're wasting by storing the same files over and over.
+As we install a lot of AI apps we get inundated with a lot of redundant files:
 
-Previously people would deal with this problem in an ad-hoc manner:
+- redundant AI model files for different apps
+- redundant runtimes (identical node modules, python modules, DLL, lib files, and so on, used by multiple apps)
+- redundant files across git worktrees
+- and so on.
 
-1. **Manual Linking:** storing files once somewhere, and create symbolic links from everywhere else, all manually.
-2. **Centralized structure:** imposing a central storage architecture: models are moved into a shared library, then you write apps so that they point to the central location, using symbolic links or app-specific configuration, which is a tedioius work and something app developers should NOT have to worry about.
+You will be shocked to find out how much disk space you're wasting by storing the same files over and over.
+
+## Existing approaches
+
+Existing solutions generally follow one of three patterns:
+
+1. **Manual linking:** Store a file once, for example in ComfyUI's model folder, then manually create symbolic links from every other app that needs it. With no system to discover or maintain those links, this is tedious and quickly becomes unmanageable.
+2. **Centralized shared library:** Store models in a shared directory, then point each app to it through symbolic links or app-specific configuration. Every app must know about this architecture and be adapted to support it.
+3. **Centralized cache:** Libraries such as `huggingface_hub`, `diffusers`, and `transformers` automatically store and reuse files from one cache. This is convenient, but separates a model from the lifecycle of the app that downloaded it. Deleting the app leaves the model behind, so caches accumulate files whose current use, and whether they are safe to delete, is unclear.
+
+### Domain-specific by design
+
+Automated sharing systems encode domain-specific knowledge: recognized model categories, known application directories, or library-specific caches. Their reach is limited to rules implemented by developers, so every new application, file category, or ecosystem requires another integration. Manual linking avoids that restriction only by making the user specify and maintain every relationship.
+
+Their scope also ends at the environment they manage. They do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools.
 
 ## Solution
 
@@ -29,9 +45,10 @@ This can recover hundreds of gigabytes or even terabytes of disk space.
 
 1. **Automatic duplicate discovery:** On Windows and macOS, Autoscan checks files created or changed by an app after it stops. No manual file comparisons or symbolic-link maintenance.
 2. **Decentralized:** No central `models` folder or shared cache is required. Files remain at the paths where their apps created them.
-3. **General-purpose:** Disk Saver deduplicates exact files, not just models. It can cover runtimes, packages, caches, archives, Pinokio Home, and other folders you add.
-4. **Reversible:** Any deduplicated file can be restored to an independent copy with **Make separate**.
-5. **Reference-aware cleanup:** Deleting one app does not affect files still used by other apps. After the final external reference disappears, Disk Saver lists the data under **Unused files** for cleanup.
+3. **No domain-specific logic:** Disk Saver does not need to understand models, packages, runtimes, applications, or folder conventions. It only verifies whether files are byte-identical. New file types, frameworks, and ecosystems require no additional deduplication logic. With **All** selected, this can extend all the way down to individual Python files.
+4. **Cross-environment deduplication:** Deduplication is not bounded by the software Pinokio manages. User-added locations on the same drive can share identical files with Pinokio or with one another, including a global Conda environment, an LM Studio model library, or models embedded in standalone llama.cpp applications.
+5. **Reversible:** Any deduplicated file can be restored to an independent copy with **Make separate**.
+6. **Reference-aware cleanup:** Deleting one app does not affect files still used by other apps. After the final external reference disappears, Disk Saver lists the data under **Unused files** for cleanup.
 
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 

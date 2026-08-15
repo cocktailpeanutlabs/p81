@@ -31,11 +31,18 @@ Existing solutions generally follow one of three patterns:
 2. **Centralized shared library:** Store models in a shared directory, then point each app to it through symbolic links or app-specific configuration. Every app must know about this architecture and be adapted to support it.
 3. **Centralized cache:** Libraries such as `huggingface_hub`, `diffusers`, and `transformers` automatically store and reuse files from one cache. This is convenient, but separates a model from the lifecycle of the app that downloaded it. Deleting the app leaves the model behind, so caches accumulate files whose current use, and whether they are safe to delete, is unclear.
 
-### Domain-specific by design
+## Problem with existing approaches
 
-Automated sharing systems encode domain-specific knowledge: recognized model categories, known application directories, or library-specific caches. Their reach is limited to rules implemented by developers, so every new application, file category, or ecosystem requires another integration. Manual linking avoids that restriction only by making the user specify and maintain every relationship.
+### Manual Linking
 
-Their scope also ends at the environment they manage. They do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools.
+- It's too much hassle
+- Cannot be automated
+- Becomes a mess as you keep creating links, you have to decide which one becomes the canonical location, etc.
+
+### Automated sharing systems
+
+- **Requires Work:** They encode domain-specific knowledge suchas recognized model categories, known application directories, or library-specific caches. **This means their reach is limited to rules implemented by developers**, so every new application, file category, or ecosystem requires another integration.
+- **Domain Specific:** Their scope also ends at the environment they manage. They do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools.
 
 ## Solution
 

@@ -41,8 +41,8 @@ Existing solutions generally follow one of three patterns:
 
 ### Automated sharing systems
 
-- **Requires Work:** They encode domain-specific knowledge suchas recognized model categories, known application directories, or library-specific caches. **This means their reach is limited to rules implemented by developers**, so every new application, file category, or ecosystem requires another integration.
-- **Domain Specific:** Their scope also ends at the environment they manage. They do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools.
+- **Requires Work:** They encode domain-specific knowledge, such as recognized model categories, known application directories, or library-specific caches. **This means their reach is limited to rules implemented by developers**, so every new application, file category, or ecosystem requires another integration.
+- **Domain Specific:** Because their scope ends at the environment they manage, you can't save disk space OUTSIDE of the environment the system has control over. These systems do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools. (For example, if you have a Qwen model downloaded in LM Studio, and a self-contained web app that packages the same Qwen model in the app, you can't deduplicate between the two.
 
 ## Solution
 

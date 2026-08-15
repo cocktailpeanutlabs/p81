@@ -12,9 +12,18 @@ section_nav_depth: 2
 
 # Pinokio 8.1: Disk Saver
 
-Existing AI app launchers save space by imposing a central storage architecture: models are moved into a shared library, then supported apps are redirected to it using symbolic links or app-specific configuration.
+## Problem
 
-Pinokio Disk Saver takes a different approach. Every app keeps its own files and folder structure, while byte-identical files share one physical copy underneath.
+**Who doesn't want to save disk space?** As we install a lot of AI apps we get inundated with a lot of redundant files--redundant AI model files, redundant runtimes, redunant library/package files, and so on. You will be shocked to find out how much disk space you're wasting by storing the same files over and over.
+
+Previously people would deal with this problem in an ad-hoc manner:
+
+1. **Manual Linking:** storing files once somewhere, and create symbolic links from everywhere else, all manually.
+2. **Centralized structure:** imposing a central storage architecture: models are moved into a shared library, then you write apps so that they point to the central location, using symbolic links or app-specific configuration, which is a tedioius work and something app developers should NOT have to worry about.
+
+## Solution
+
+Pinokio Disk Saver takes a new, different approach. Every app keeps its own files and folder structure, while byte-identical files share one physical copy underneath (achieved using a [content addressable file system](https://en.wikipedia.org/wiki/Content-addressable_storage))
 
 This can recover hundreds of gigabytes or even terabytes of disk space.
 
@@ -27,16 +36,6 @@ This can recover hundreds of gigabytes or even terabytes of disk space.
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 
 
-## Problem
-
-As you install a few AI apps, you will often end up with several copies of the same model, runtime, or package. This grows over time and you end up wasting a lot of disk space storing the same files multiple times.
-
-
-## Solution
-
-**Disk Saver** finds exact duplicates and lets them share disk space without moving them or changing the paths your apps use.
-
-Furthermore, it has an "autoscan" mode (Windows and Mac only) that automatically lets you know when running an app has created any duplicate files (so you can deduplicate them to save the disk space).
 
 ## How it works
 

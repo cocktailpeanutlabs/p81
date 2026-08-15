@@ -67,7 +67,7 @@ The scan summary separates what you use now from what you could save:
 
 - **In use:** physical space currently occupied.
 - **Saved:** space already avoided through deduplication.
-- **Can save:** space available from eligible duplicates.
+- **Can save:** space available from eligible duplicates, found through scanning.
 
 The numbers update after each action. It is normal for the logical file total to be larger than the physical storage used: several paths can point to the same data.
 
@@ -150,7 +150,7 @@ After the global scan, choose **Add**, then **Find more savings**, to search you
 
 ![Annotated Find more savings dialog](media/annotated/p81-09-find-more-savings-annotated.png)
 
-Hardlinks cannot cross filesystems. Files on an external SSD can share space with each other, but not with a file on the internal drive.
+Disk saver cannot cross filesystems. Files on an external SSD can share space with each other, but not with a file on the internal drive.
 
 - Search Home. Locations already managed by Disk Saver should be skipped.
 - Cancel a search. Nothing should be added.
@@ -164,7 +164,7 @@ Every installed app has its own Disk Saver page. It shows the app's **Unique**, 
 
 Run the global scan first so Pinokio has a verified set of files to compare against.
 
-![Annotated app-specific Disk Saver summary](media/annotated/p81-10-app-scan-annotated.png)
+![Annotated Disk Saver page inside the openDAW app](media/annotated/p81-10-app-scan-annotated.png)
 
 - Open an app, choose Disk Saver, and scan it.
 - Change its minimum-size setting.

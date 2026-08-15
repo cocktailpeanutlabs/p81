@@ -8,15 +8,15 @@ render_with_liquid: false
 section_nav_depth: 2
 ---
 
-# Pinokio 8.1 — Disk Saver
+# Pinokio 8.1: Disk Saver
 
-AI apps often download the same huge models, runtimes, and packages into different folders. **Disk Saver** finds files that are exactly the same and lets them share disk space—without moving them or changing the paths your apps use.
+Install a few AI apps and you will often end up with several copies of the same model, runtime, or package. **Disk Saver** finds exact duplicates and lets them share disk space without moving them or changing the paths your apps use.
 
 It scans Pinokio Home first. You can also add model libraries, caches, old Pinokio Homes, project folders, and other locations on your computer.
 
-> **Nothing changes during a scan.** Pinokio only deduplicates files after you review the results and choose a Deduplicate action.
+> A scan is read-only. Files change only when you choose **Deduplicate**, **Make separate**, or **Clean up**.
 
-> **Apps keep their own files and lifecycle.** A model can stay inside an app's folder and disappear when you delete that app. If another app has the same model, both paths can share one physical copy in the meantime.
+Each app keeps its usual files and paths. If two apps have the same model, those paths can share disk space. Delete one app and only its path goes away.
 
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 
@@ -24,66 +24,60 @@ It scans Pinokio Home first. You can also add model libraries, caches, old Pinok
 
 # Features to test
 
-These screenshots are from Pinokio 8.1. Your file names, counts, and storage totals will be different.
+These screenshots are from Pinokio 8.1. Your file names, counts, and storage totals will be different. The checks below each screenshot cover the main things to test.
 
 ## 1. Run the first global scan
 
-Open **Manage → Disk Saver**, choose a minimum file size, and start the scan. A larger minimum is faster; a smaller one may find more savings.
+Open **Manage**, then **Disk Saver**. Choose a minimum file size and start the scan. A larger minimum is faster; a smaller one may find more savings.
 
 You can scan **All files, 1 MB+, 10 MB+, 50 MB+, 100 MB+, 500 MB+, or 1 GB+**. Empty files are ignored.
 
 ![Completed global Disk Saver scan](media/p81-01-global-overview.jpg)
 
-**Try it**
-
 - Start a scan and watch its progress.
 - Cancel it, then start again.
 - Change the minimum size and run another scan.
-- If a path cannot be read, check that the scan still finishes and shows an exclusions notice.
-- Confirm that scanning alone does not link, replace, or delete anything.
+- If a path cannot be read, the rest of the scan should finish and an exclusions notice should appear.
+- Scanning alone should not link, replace, or delete anything.
 
 ## 2. Understand the result views
 
 Each view answers a different question:
 
-- **All files** — every non-empty file that met the size limit.
-- **Duplicates** — identical files you can deduplicate.
-- **Cannot deduplicate** — identical files that cannot safely share storage.
-- **Deduplicated** — files already sharing storage.
-- **No action needed** — files with no duplicate action to take.
-- **Unused files** — private Disk Saver links left after their app files were deleted.
-- **Activity** — a record of Disk Saver changes.
+- **All files:** every non-empty file that met the size limit.
+- **Duplicates:** identical files you can deduplicate.
+- **Cannot deduplicate:** identical files that cannot safely share storage.
+- **Deduplicated:** files already sharing storage.
+- **No action needed:** files with no duplicate action to take.
+- **Unused files:** private Disk Saver links left after their app files were deleted.
+- **Activity:** a record of Disk Saver changes.
 
 Use Search, status and location filters, and the **Folders / Files** switch to narrow the list.
 
 ![Duplicates grouped by Pinokio apps and external folders](media/p81-02-duplicates.jpg)
 
-**Try it**
-
 - Open every view and compare its count with the files shown.
 - Search for part of a file or folder name.
 - Switch between Folders and Files.
-- Choose one location and confirm that its actions stay inside that location.
+- Choose one location. Its actions should not affect another location.
 
 ## 3. Read the storage summary
 
 The summary separates what you use now from what you could save:
 
-- **Still used** — physical space currently occupied.
-- **Saved** — space already avoided through deduplication.
-- **Can save** — space available from eligible duplicates.
+- **Still used:** physical space currently occupied.
+- **Saved:** space already avoided through deduplication.
+- **Can save:** space available from eligible duplicates.
 
 The numbers update after each action. It is normal for the logical file total to be larger than the physical storage used: several paths can point to the same data.
 
 ![Storage bar showing still used, saved, and available savings](media/p81-01-global-overview.jpg)
 
-**Try it**
-
 - Note all three values.
 - Deduplicate one test file. **Saved** should rise while **Can save** falls.
 - Make it separate again. The values should move back.
 
-## 4. Deduplicate one file—or many
+## 4. Deduplicate one or many files
 
 The Duplicates view groups byte-identical files and shows where each match lives. You can act on one file, select up to 500 rows, deduplicate a folder or location, or choose **Deduplicate all**.
 
@@ -91,15 +85,13 @@ Every path stays in place. Pinokio replaces only the redundant storage with a ha
 
 ![A selected duplicate and the Deduplicate selected file action](media/p81-03-deduplicate-selection.jpg)
 
-**Try it**
-
 - Select one disposable duplicate first.
-- Check that the button shows the selection count and expected savings.
-- After deduplicating, confirm that both paths still exist and their checksums match the originals.
-- Check that the file moves to **Deduplicated** and appears in Activity.
-- Run a location-level action and confirm that it does not touch other locations.
+- The button should show the selection count and expected savings.
+- After deduplicating, both paths should still exist and their checksums should match the originals.
+- The file should move to **Deduplicated** and appear in Activity.
+- A location-level action should not touch other locations.
 
-If a file changes after the scan—or belongs to a running Pinokio app—Pinokio may skip it. Close the app and scan again.
+Pinokio may skip a file if it changed after the scan or belongs to a running app. Close the app and scan again.
 
 ## 5. See why a file cannot be deduplicated
 
@@ -107,12 +99,10 @@ Matching contents are not enough. Files must also have compatible permissions, o
 
 ![Cannot deduplicate view explaining permission and ownership differences](media/p81-04-cannot-deduplicate.jpg)
 
-**Try it**
-
-- Confirm that this view has no bulk Deduplicate action.
-- Check that every row gives a reason.
+- This view should have no bulk Deduplicate action.
+- Every row should give a reason.
 - If you see **Try again**, fix the temporary access problem and retry.
-- Confirm that one unreadable path does not discard the rest of the scan.
+- One unreadable path should not discard the rest of the scan.
 
 ## 6. Make a file separate again
 
@@ -122,13 +112,11 @@ Use it before editing a file in place, making an independent archive, or simply 
 
 ![Deduplicated files with Make separate actions](media/p81-05-make-separate.jpg)
 
-**Try it**
-
 - Make one disposable deduplicated file separate.
-- Confirm that its path and checksum stay the same.
-- Confirm that it no longer shares an inode with the other copy.
+- Its path and checksum should stay the same.
+- It should no longer share an inode with the other copy.
 - Try a checkbox selection and review the larger-batch confirmation.
-- Check that Activity records the separation.
+- Look for the separation in Activity.
 
 ## 7. Clean up unused private links
 
@@ -138,43 +126,37 @@ Cleanup is conservative: Pinokio only removes an unchanged private link when its
 
 ![Unused files empty state](media/p81-06-unused-files.jpg)
 
-**Try it**
-
 - If unused links exist, review their count and reclaimable size.
 - Clean up one, then try **Clean up all**.
-- Confirm that an in-use private link cannot be cleaned up.
-- Check that Activity records the cleanup.
+- An in-use private link should not be removable.
+- Look for the cleanup in Activity.
 
 ## 8. Add folders outside Pinokio Home
 
-Choose **Add → Add folder** to include a model library, download cache, project archive, old Pinokio Home, or any folder you control. It appears under **Other folders**, where you can filter, scan, or remove it independently.
+Choose **Add**, then **Add folder**, to include a model library, download cache, project archive, old Pinokio Home, or any folder you control. It appears under **Other folders**, where you can filter, scan, or remove it independently.
 
 Removing a location from Disk Saver only stops tracking it. It does not delete the folder.
 
 ![Add menu with Add folder and Find more savings](media/p81-07-add-locations.jpg)
 
-**Try it**
-
 - Add a small folder with disposable duplicates.
 - Scan and find it under Other folders.
 - Deduplicate only that location.
-- Remove the location and confirm that the real folder is still there.
+- Remove the location. The real folder should still be there.
 
 ## 9. Find more savings elsewhere
 
-After the global scan, choose **Add → Find more savings** to search your Home folder, another folder, or another drive. Set a minimum size, review the suggestions, and add only the locations you want.
+After the global scan, choose **Add**, then **Find more savings**, to search your Home folder, another folder, or another drive. Set a minimum size, review the suggestions, and add only the locations you want.
 
 ![Choose where to search dialog for Home, another folder, or a drive](media/p81-08-find-more-savings.jpg)
 
-Hardlinks cannot cross filesystems. Think of each drive as its own deduplication island: files on one external SSD can share space with each other, but not with a file on the internal drive.
+Hardlinks cannot cross filesystems. Files on an external SSD can share space with each other, but not with a file on the internal drive.
 
-**Try it**
-
-- Search Home and confirm that managed locations are skipped.
-- Cancel a search and confirm that nothing is added.
+- Search Home. Locations already managed by Disk Saver should be skipped.
+- Cancel a search. Nothing should be added.
 - Search another folder and review suggestions before accepting them.
 - On a hardlink-compatible external drive, deduplicate two files on that drive.
-- Confirm that cross-drive matches are unavailable rather than actionable.
+- Cross-drive matches should not offer a Deduplicate action.
 
 ## 10. Scan one app
 
@@ -184,28 +166,24 @@ Run the global scan first so Pinokio has a verified set of files to compare agai
 
 ![App-specific Disk Saver view for openDAW](media/p81-09-app-disk-saver.jpg)
 
-**Try it**
-
 - Open an app, choose Disk Saver, and scan it.
 - Change its minimum-size setting.
-- Check the Unique / Shared / Can save summary.
-- Deduplicate from this page and confirm that unrelated apps are untouched.
+- Review the Unique / Shared / Can save summary.
+- Deduplicate from this page. Unrelated apps should be untouched.
 
 ## 11. Check apps automatically
 
 Set an app's Disk Saver control to **Auto** or **Manual**. In Auto mode, Pinokio watches which files the app changes, then checks eligible files after the app stops.
 
-If it finds verified duplicates, the control shows **New**. Opening the result clears that indicator. Auto mode never deduplicates by itself—you still review the files and choose the action.
+If it finds verified duplicates, the control shows **New**. Opening the result clears that indicator. Auto mode never deduplicates by itself. You still review the files and choose the action.
 
 ![Disk Saver Auto mode in an app sidebar](media/p81-11-automatic-app-checking.jpg)
 
-**Try it**
-
 - Switch between Auto and Manual, then reopen the app page.
 - In Auto mode, let the app create or download a large duplicate and then stop it.
-- Confirm that **New** appears only after Pinokio finds a verified match.
-- Open the result and confirm that **New** clears.
-- Confirm that Manual mode does not run the automatic check.
+- **New** should appear only after Pinokio finds a verified match.
+- Open the result. **New** should clear.
+- Manual mode should not run the automatic check.
 
 ## 12. Review activity and partial failures
 
@@ -213,27 +191,25 @@ Activity records successful deduplication, separation, and cleanup, including fi
 
 ![Disk Saver activity history](media/p81-10-activity.jpg)
 
-**Try it**
-
 - Perform one action of each kind and find all three in Activity.
-- Search Activity and return later to confirm that entries remain.
-- Scan a harmless unreadable test folder and check that the affected path is listed.
-- Cancel a long action and confirm that unfinished files are not reported as successful.
+- Search Activity, leave the page, and come back. The entries should remain.
+- Scan a harmless unreadable test folder. The affected path should be listed.
+- Cancel a long action. Unfinished files should not be reported as successful.
 
 # Powerful use cases
 
-Disk Saver helps most when large, mostly read-only files have been copied because different tools expect their own folder layouts.
+Disk Saver is most useful for large files that rarely change but have been copied into several tool-specific folders.
 
 ## Keep app installs disposable without wasting space
 
-Normally you must choose:
+Without Disk Saver, apps usually handle models in one of two ways:
 
-- Give every app its own models. Uninstalling is simple, but storage is repeated.
-- Put models in a central cache or shared folder. Storage is shared, but the models no longer belong to any one app.
+- Each app keeps its own models. Uninstalling is simple, but every copy takes space.
+- Apps use a central cache or shared folder. This saves space, but deleting an app leaves the shared model behind.
 
-Disk Saver separates the path from the storage. Each app still sees a normal file in its own folder, while identical files can share the same physical data.
+With Disk Saver, each app still sees a normal file in its own folder. Identical files can share the same data underneath.
 
-**Example**
+Here is what that looks like:
 
 1. App A downloads `model.safetensors` into its own folder.
 2. App B downloads the identical model into its folder.
@@ -247,15 +223,15 @@ Disk Saver separates the path from the storage. Each app still sees a normal fil
 | Shared folder, symlinks, or cache | Points to a central location | Shared | Leaves the central model | Copy and reconfigure |
 | Pinokio Disk Saver | Inside each app | Shared for identical files | Deletes only that app's path | Choose **Make separate** |
 
-Setting `HF_HOME`, for example, chooses a shared root for the Hugging Face cache. Disk Saver takes a different approach: the app paths stay separate while verified content shares storage. See the [Hugging Face cache documentation](https://huggingface.co/docs/huggingface_hub/main/guides/manage-cache).
+`HF_HOME`, for example, points Hugging Face downloads to one shared cache. Disk Saver leaves the app paths where they are and deduplicates exact matches in place. See the [Hugging Face cache documentation](https://huggingface.co/docs/huggingface_hub/main/guides/manage-cache).
 
-Hardlinks, hashing, and deduplication are established techniques. The useful part is how Pinokio brings them together: automatic discovery, exact-content checks, app-local paths, selective actions, **Make separate**, and safe cleanup.
+There is no new file format here. Pinokio uses hardlinks and handles the fiddly parts for you: finding matches, checking their contents, separating them again, and cleaning up leftovers.
 
 ## One model, many AI apps
 
 ComfyUI, InvokeAI, image generators, trainers, audio tools, and custom launchers may all download the same checkpoint.
 
-If three files contain the same 17.24 GB model, they can keep all three paths while using one physical copy—saving about 34.48 GB. Names do not need to match; the contents do.
+Suppose three apps each contain the same 17.24 GB model. They can keep all three paths while using one physical copy, saving about 34.48 GB. The names can differ; the contents cannot.
 
 ## Old Pinokio Homes and rollback copies
 
@@ -267,13 +243,13 @@ Add the old folders and deduplicate their stable overlap. Each directory tree re
 
 Apps often install the same PyTorch wheels, CUDA libraries, Python packages, Node or Electron binaries, Rust toolchains, FFmpeg builds, and browser runtimes.
 
-Ten environments containing the same 200 MB library can share one copy and save about 1.8 GB—without merging the environments or changing imports.
+Ten environments containing the same 200 MB library can share one copy and save about 1.8 GB. The environments remain separate and their imports do not change.
 
 ## Hugging Face and app caches
 
 A model may exist in the Hugging Face cache and again inside several apps. Add the cache, scan it with Pinokio Home, and review exact matches.
 
-This helps when symlinks would confuse an installer or an app insists on its own path.
+Use this when symlinks confuse an installer or an app insists on its own path.
 
 ## Forks, worktrees, and experiments
 
@@ -283,7 +259,7 @@ Keep every experiment self-contained while unchanged files share storage. Use **
 
 ## Downloads, installers, and archives
 
-Download folders collect repeated `.zip`, `.tar`, `.dmg`, `.pkg`, model, and dataset files—often under different names. These are good candidates because they rarely change.
+Download folders collect repeated `.zip`, `.tar`, `.dmg`, `.pkg`, model, and dataset files, often under different names. These are good candidates because they rarely change.
 
 Add the archive folders as they are. Disk Saver keeps their structure and only offers exact matches.
 
@@ -291,7 +267,7 @@ Add the archive folders as they are. Disk Saver keeps their structure and only o
 
 Training data, stock assets, sound libraries, textures, footage, and exports often get copied into several projects.
 
-Deduplicate finalized or read-only assets. Keep databases, active project files, and media that an editor rewrites separate—or separate them before editing.
+Deduplicate finalized or read-only assets. Keep databases, active project files, and media that an editor rewrites separate. If needed, use **Make separate** before editing.
 
 ## Build farms and development caches
 
@@ -305,9 +281,7 @@ The drive must use a filesystem that supports hardlinks. FAT-family filesystems 
 
 ## Find duplicates without changing them
 
-You can use Disk Saver as an inventory: scan, search, compare paths, and inspect exclusions without deduplicating anything.
-
-That is useful for finding accidental downloads, explaining why a migration doubled in size, or seeing which app owns a large file.
+You can also use Disk Saver as an inventory. Scan, search, compare paths, and inspect exclusions without deduplicating anything. This can uncover accidental downloads, explain why a migration doubled in size, or show which app owns a large file.
 
 ## Clean up after uninstalling apps
 
@@ -317,19 +291,19 @@ You stay in control of that last deletion, and Activity records it.
 
 # How Disk Saver works
 
-1. **Inventory:** Scan the selected locations without following symbolic links.
-2. **Filter:** Use size, filesystem, metadata, and file identity to find likely matches.
-3. **Verify:** Hash candidates with SHA-256. Only byte-identical files qualify.
-4. **Review:** Show Duplicates, Cannot deduplicate, Deduplicated, and No action needed. Nothing changes yet.
-5. **Deduplicate:** After you approve, replace redundant storage with a hardlink on the same filesystem.
-6. **Separate:** Copy a linked path back to an independent file.
-7. **Clean up:** Remove a private link only when it is unchanged and no managed path uses it.
+1. Pinokio scans the selected locations without following symbolic links.
+2. It uses file size, filesystem, metadata, and file identity to narrow the search.
+3. It hashes possible matches with SHA-256. Only byte-for-byte matches qualify.
+4. You review the results. The scan has not changed anything.
+5. When you choose Deduplicate, Pinokio replaces the redundant storage with a hardlink on the same filesystem.
+6. Make separate copies a linked path back to an independent file.
+7. Clean up removes a private link only after checking that it is unchanged and unused.
 
 ## What a hardlink means
 
-A hardlink is another name for the same physical file data—not a shortcut. Every path behaves like a normal file. Deleting one path leaves the data available through the others.
+A hardlink is another name for the same physical file data. It is not a shortcut. Every path behaves like a normal file, and deleting one path leaves the data available through the others.
 
-There is one important caution: if an app changes the bytes **in place**, every hardlink sees that change. Models, archives, runtimes, and other read-only files are ideal. Use **Make separate** before editing.
+If an app changes the bytes **in place**, every hardlink sees the change. Models, archives, runtimes, and other read-only files are the safest choices. Use **Make separate** before editing.
 
 Many apps save by writing a new temporary file and renaming it over the old one. That naturally gives the changed path its own data, but not every app works this way.
 
@@ -388,7 +362,7 @@ No. Hardlinks cannot cross filesystem boundaries. Disk Saver can manage several 
 
 ## Why is an identical file under Cannot deduplicate?
 
-The contents match, but another safety check failed. The row will name the reason, such as permissions, ownership, hardlink support, different drives, denied access, or a reference that could not be verified.
+The contents match, but another safety check failed. The row gives the reason: permissions, ownership, hardlink support, different drives, denied access, or a reference Pinokio could not verify.
 
 ## Is a scan destructive?
 

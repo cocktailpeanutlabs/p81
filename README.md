@@ -65,7 +65,7 @@ Use Search, status and location filters, and the **Folders / Files** switch to n
 
 The scan summary separates what you use now from what you could save:
 
-- **Still used:** physical space currently occupied.
+- **In use:** physical space currently occupied.
 - **Saved:** space already avoided through deduplication.
 - **Can save:** space available from eligible duplicates.
 

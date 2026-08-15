@@ -22,13 +22,13 @@ Each app keeps its usual files and paths. If two apps have the same model, those
 
 [Download Pinokio](https://desktop.pinokio.co/)
 
-# Features to test
+# Features
 
 These screenshots are from Pinokio 8.1. Your file names, counts, and storage totals will be different. The checks below each screenshot cover the main things to test.
 
 ## 1. Run the first global scan
 
-Open **Manage**, then **Disk Saver**. Choose a minimum file size and start the scan. A larger minimum is faster; a smaller one may find more savings.
+In Pinokio's left sidebar, find the **Manage** section and click **Disk Saver**. Choose a minimum file size and start the scan. A larger minimum is faster; a smaller one may find more savings.
 
 You can scan **All files, 1 MB+, 10 MB+, 50 MB+, 100 MB+, 500 MB+, or 1 GB+**. Empty files are ignored.
 
@@ -61,9 +61,9 @@ Use Search, status and location filters, and the **Folders / Files** switch to n
 - Switch between Folders and Files.
 - Choose one location. Its actions should not affect another location.
 
-## 3. Read the storage summary
+## 3. Read the scan summary
 
-The summary separates what you use now from what you could save:
+The scan summary separates what you use now from what you could save:
 
 - **Still used:** physical space currently occupied.
 - **Saved:** space already avoided through deduplication.

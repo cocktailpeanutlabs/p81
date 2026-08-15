@@ -8,6 +8,8 @@ render_with_liquid: false
 section_nav_depth: 2
 ---
 
+<img class="release-hero" src="media/p81-disk-saver-hero.png" alt="Pinokio 8.1 Disk Saver fusion mark">
+
 # Pinokio 8.1: Disk Saver
 
 Install a few AI apps and you will often end up with several copies of the same model, runtime, or package. **Disk Saver** finds exact duplicates and lets them share disk space without moving them or changing the paths your apps use.
@@ -171,7 +173,7 @@ Run the global scan first so Pinokio has a verified set of files to compare agai
 - Review the Unique / Shared / Can save summary.
 - Deduplicate from this page. Unrelated apps should be untouched.
 
-## 11. Check apps automatically
+## 11. Autoscan
 
 Set an app's Disk Saver control to **Auto** or **Manual**. In Auto mode, Pinokio watches which files the app changes, then checks eligible files after the app stops.
 

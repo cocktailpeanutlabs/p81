@@ -5,7 +5,7 @@ description: Pinokio 8.1 Disk Saver release notes and testing guide
 permalink: /
 has_toc: false
 render_with_liquid: false
-section_nav_depth: 1
+section_nav_depth: 2
 ---
 
 # Pinokio 8.1 — Disk Saver

@@ -177,7 +177,7 @@ Set an app's Disk Saver control to **Auto** or **Manual**. In Auto mode, Pinokio
 
 If it finds verified duplicates, the control shows **New**. Opening the result clears that indicator. Auto mode never deduplicates by itself. You still review the files and choose the action.
 
-![Annotated app Disk Saver automatic mode control](media/annotated/p81-11-auto-checking-annotated.png)
+![Annotated Automatic and Manual checking menu inside an app's Disk Saver page](media/annotated/p81-11-auto-checking-annotated.png)
 
 - Switch between Auto and Manual, then reopen the app page.
 - In Auto mode, let the app create or download a large duplicate and then stop it.
@@ -185,16 +185,18 @@ If it finds verified duplicates, the control shows **New**. Opening the result c
 - Open the result. **New** should clear.
 - Manual mode should not run the automatic check.
 
-## 12. Review activity and partial failures
+## 12. Review Activity and skipped files
 
-Activity records successful deduplication, separation, and cleanup, including file counts, sizes, and times. It is an audit trail, not an undo button; use **Make separate** to reverse deduplication.
+Activity is a history of completed Disk Saver changes. Each entry shows the action, how many files changed, the size, and the time. Use the search box to find older entries.
 
-![Annotated Disk Saver Activity view](media/annotated/p81-12-activity-annotated.png)
+Activity is not an undo button. Use **Make separate** to reverse deduplication. Skipped files do not appear as successful Activity entries. After a partial scan or action, open the exclusions notice to see which paths were skipped and why.
 
-- Perform one action of each kind and find all three in Activity.
+![Annotated Disk Saver Activity tab, search box, and history entry](media/annotated/p81-12-activity-annotated.png)
+
+- Deduplicate a file, make it separate, and clean up an unused file. Confirm each completed action appears in Activity.
 - Search Activity, leave the page, and come back. The entries should remain.
-- Scan a harmless unreadable test folder. The affected path should be listed.
-- Cancel a long action. Unfinished files should not be reported as successful.
+- Scan a harmless unreadable test folder. The exclusions notice should list the path and reason.
+- Cancel a long action. Unfinished files should not appear as successful Activity entries.
 
 # Powerful use cases
 

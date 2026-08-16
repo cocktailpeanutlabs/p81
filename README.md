@@ -46,6 +46,8 @@ Existing solutions generally follow one of three patterns:
 
 ## Solution
 
+![saved](media/saved.png)
+
 Pinokio Disk Saver takes a new, different approach. Every app keeps its own files and folder structure, while byte-identical files share one physical copy underneath (achieved using a [content addressable file system](https://en.wikipedia.org/wiki/Content-addressable_storage))
 
 1. **General purpose deduplication:** Disk Saver does not need to understand models, packages, runtimes, applications, folder conventions, file locations, or symbolic links. There is no special domain specific logic. It only verifies whether files are byte-identical. New file types, frameworks, and ecosystems require no additional deduplication logic.
@@ -55,10 +57,8 @@ Pinokio Disk Saver takes a new, different approach. Every app keeps its own file
 
 Because of its flexibility and general purpose nature, it can recover hundreds of gigabytes or even terabytes of disk space.
 
-![saved](media/saved.png)
 
-
-## How to use
+## What it looks like
 
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 

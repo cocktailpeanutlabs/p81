@@ -10,7 +10,7 @@ section_nav_depth: 2
 
 <img class="release-hero" src="media/p81-disk-saver-stack-clean.png" alt="Pinokio 8.1 Universal Disk Saver stack spanning AI applications, package ecosystems, and operating systems" width="1920" height="1080">
 
-# Universal Disk Saver
+# Pinokio Disk Saver
 
 > DOWNLOAD LATEST BETA: [v8.0.100](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.100)
 

@@ -12,7 +12,7 @@ section_nav_depth: 2
 
 # Pinokio 8.1: Universal Disk Saver
 
-## Problem
+## What problem does it solve?
 
 As we install a lot of AI apps we get inundated with a lot of redundant files:
 
@@ -44,7 +44,7 @@ Existing solutions generally follow one of three patterns:
 - **Requires Work:** They encode domain-specific knowledge, such as recognized model categories, known application directories, or library-specific caches. **This means their reach is limited to rules implemented by developers**, so every new application, file category, or ecosystem requires another integration.
 - **Domain Specific:** Because their scope ends at the environment they manage, you can't save disk space OUTSIDE of the environment the system has control over. These systems do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools. (For example, if you have a Qwen model downloaded in LM Studio, and a self-contained web app that packages the same Qwen model in the app, you can't deduplicate between the two.
 
-## Solution
+## The Solution
 
 ![saved](media/saved.png)
 

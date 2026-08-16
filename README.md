@@ -12,7 +12,7 @@ section_nav_depth: 2
 
 # Pinokio 8.1: Universal Disk Saver
 
-> [Download Pinokio](https://desktop.pinokio.co/)
+> DOWNLOAD LATEST BETA: [v8.0.100](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.100)
 
 ## What problem does it solve?
 

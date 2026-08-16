@@ -94,113 +94,6 @@ So what exactly does it mean by "duplicate", and what does it mean when you "ded
 
 [Download Pinokio](https://desktop.pinokio.co/)
 
-
-# A safe five-minute test
-
-1. Create a temporary folder on the same drive as Pinokio Home.
-2. Put two byte-identical disposable files in it. A large model or archive makes the result easy to see.
-3. Add the folder to Disk Saver and scan below the test file's size.
-4. Select one copy under Duplicates and deduplicate it.
-5. Open both paths and compare their checksums.
-6. Choose **Make separate** and check both files again.
-7. Delete the test files normally, then check **Unused files** for anything reclaimable.
-
-
-# Use cases
-
-
-Disk Saver is most useful for large files that rarely change but have been copied into several tool-specific folders.
-
-## Keep app installs disposable without wasting space
-
-Without Disk Saver, apps usually handle models in one of two ways:
-
-- **No Deduplication:** Each app keeps its own models. Uninstalling is simple, but every copy takes space.
-- **Centralized Deduplication:** Apps use a central cache or shared folder (for example a `models` folder to store all the common models). This saves space, but deleting an app leaves the shared model behind.
-
-With Disk Saver, each app still sees a normal file in its own folder. Identical files can share the same data underneath.
-
-Here is what that looks like:
-
-1. App A downloads `model.safetensors` into its own folder.
-2. App B downloads the identical model into its folder.
-3. Disk Saver verifies both and makes them share one physical copy.
-4. Delete App A. Its folder disappears; App B keeps working.
-5. Delete App B. Its path disappears too. The final private link appears under **Unused files**, where you can safely clean it up.
-
-| Approach | App paths | Storage | Delete one app | Make one app independent |
-|---|---|---|---|---|
-| Separate copies | Inside each app | Repeated | Deletes its copy | Already independent |
-| Shared folder, symlinks, or cache | Points to a central location | Shared | Leaves the central model | Copy and reconfigure |
-| Pinokio Disk Saver | Inside each app | Shared for identical files | Deletes only that app's path | Choose **Make separate** |
-
-`HF_HOME`, for example, points Hugging Face downloads to one shared cache. Disk Saver leaves the app paths where they are and deduplicates exact matches in place. See the [Hugging Face cache documentation](https://huggingface.co/docs/huggingface_hub/main/guides/manage-cache).
-
-There is no new file format here. Pinokio uses hardlinks and handles the fiddly parts for you: finding matches, checking their contents, separating them again, and cleaning up leftovers.
-
-## One model, many AI apps
-
-ComfyUI, InvokeAI, image generators, trainers, audio tools, and custom launchers may all download the same checkpoint.
-
-Suppose three apps each contain the same 17.24 GB model. They can keep all three paths while using one physical copy, saving about 34.48 GB. The names can differ; the contents cannot.
-
-## Old Pinokio Homes and rollback copies
-
-Folders such as `pinokio-old`, `pinokio-working`, and a fresh Pinokio Home are useful during an upgrade, but their repeated models and runtimes are expensive.
-
-Add the old folders and deduplicate their stable overlap. Each directory tree remains complete for rollback. If an old Home is on another drive, it can only share space with files on that drive.
-
-## Python environments and runtimes
-
-Apps often install the same PyTorch wheels, CUDA libraries, Python packages, Node or Electron binaries, Rust toolchains, FFmpeg builds, and browser runtimes.
-
-Ten environments containing the same 200 MB library can share one copy and save about 1.8 GB. The environments remain separate and their imports do not change.
-
-## Hugging Face and app caches
-
-A model may exist in the Hugging Face cache and again inside several apps. Add the cache, scan it with Pinokio Home, and review exact matches.
-
-Use this when symlinks confuse an installer or an app insists on its own path.
-
-## Forks, worktrees, and experiments
-
-Copying a working project is a quick way to start an experiment. The source code is usually small; copied environments, models, test data, and build artifacts are not.
-
-Keep every experiment self-contained while unchanged files share storage. Use **Make separate** before editing a shared file in place.
-
-## Downloads, installers, and archives
-
-Download folders collect repeated `.zip`, `.tar`, `.dmg`, `.pkg`, model, and dataset files, often under different names. These are good candidates because they rarely change.
-
-Add the archive folders as they are. Disk Saver keeps their structure and only offers exact matches.
-
-## Datasets and media libraries
-
-Training data, stock assets, sound libraries, textures, footage, and exports often get copied into several projects.
-
-Deduplicate finalized or read-only assets. Keep databases, active project files, and media that an editor rewrites separate. If needed, use **Make separate** before editing.
-
-## Build farms and development caches
-
-Branches and apps can repeat entire dependency trees and toolchains. Start with a **100 MB** or **500 MB** scan to catch the large native binaries, then lower the limit if the extra scan time is worthwhile.
-
-## Portable workspaces on external SSDs
-
-An SSD may hold several self-contained AI workspaces. Add its folders and deduplicate files within that drive. The paths remain portable and the space is saved on the SSD.
-
-The drive must use a filesystem that supports hardlinks. FAT-family filesystems generally do not.
-
-## Find duplicates without changing them
-
-You can also use Disk Saver as an inventory. Scan, search, compare paths, and inspect exclusions without deduplicating anything. This can uncover accidental downloads, explain why a migration doubled in size, or show which app owns a large file.
-
-## Clean up after uninstalling apps
-
-Deleting an app removes its folder and model paths. If another app still links to the same content, that app keeps working. After the final app path is gone, the verified private link may appear under **Unused files** for cleanup.
-
-You stay in control of that last deletion, and Activity records it.
-
-
 # Features
 
 These screenshots are from Pinokio 8.1. Your file names, counts, and storage totals will be different. The checks below each screenshot cover the main things to test.
@@ -376,6 +269,102 @@ Activity is not an undo button. Use **Make separate** to reverse deduplication. 
 - Search Activity, leave the page, and come back. The entries should remain.
 - Scan a harmless unreadable test folder. The exclusions notice should list the path and reason.
 - Cancel a long action. Unfinished files should not appear as successful Activity entries.
+
+
+# Use cases
+
+
+Disk Saver is most useful for large files that rarely change but have been copied into several tool-specific folders.
+
+## Keep app installs disposable without wasting space
+
+Without Disk Saver, apps usually handle models in one of two ways:
+
+- **No Deduplication:** Each app keeps its own models. Uninstalling is simple, but every copy takes space.
+- **Centralized Deduplication:** Apps use a central cache or shared folder (for example a `models` folder to store all the common models). This saves space, but deleting an app leaves the shared model behind.
+
+With Disk Saver, each app still sees a normal file in its own folder. Identical files can share the same data underneath.
+
+Here is what that looks like:
+
+1. App A downloads `model.safetensors` into its own folder.
+2. App B downloads the identical model into its folder.
+3. Disk Saver verifies both and makes them share one physical copy.
+4. Delete App A. Its folder disappears; App B keeps working.
+5. Delete App B. Its path disappears too. The final private link appears under **Unused files**, where you can safely clean it up.
+
+| Approach | App paths | Storage | Delete one app | Make one app independent |
+|---|---|---|---|---|
+| Separate copies | Inside each app | Repeated | Deletes its copy | Already independent |
+| Shared folder, symlinks, or cache | Points to a central location | Shared | Leaves the central model | Copy and reconfigure |
+| Pinokio Disk Saver | Inside each app | Shared for identical files | Deletes only that app's path | Choose **Make separate** |
+
+`HF_HOME`, for example, points Hugging Face downloads to one shared cache. Disk Saver leaves the app paths where they are and deduplicates exact matches in place. See the [Hugging Face cache documentation](https://huggingface.co/docs/huggingface_hub/main/guides/manage-cache).
+
+There is no new file format here. Pinokio uses hardlinks and handles the fiddly parts for you: finding matches, checking their contents, separating them again, and cleaning up leftovers.
+
+## One model, many AI apps
+
+ComfyUI, InvokeAI, image generators, trainers, audio tools, and custom launchers may all download the same checkpoint.
+
+Suppose three apps each contain the same 17.24 GB model. They can keep all three paths while using one physical copy, saving about 34.48 GB. The names can differ; the contents cannot.
+
+## Old Pinokio Homes and rollback copies
+
+Folders such as `pinokio-old`, `pinokio-working`, and a fresh Pinokio Home are useful during an upgrade, but their repeated models and runtimes are expensive.
+
+Add the old folders and deduplicate their stable overlap. Each directory tree remains complete for rollback. If an old Home is on another drive, it can only share space with files on that drive.
+
+## Python environments and runtimes
+
+Apps often install the same PyTorch wheels, CUDA libraries, Python packages, Node or Electron binaries, Rust toolchains, FFmpeg builds, and browser runtimes.
+
+Ten environments containing the same 200 MB library can share one copy and save about 1.8 GB. The environments remain separate and their imports do not change.
+
+## Hugging Face and app caches
+
+A model may exist in the Hugging Face cache and again inside several apps. Add the cache, scan it with Pinokio Home, and review exact matches.
+
+Use this when symlinks confuse an installer or an app insists on its own path.
+
+## Forks, worktrees, and experiments
+
+Copying a working project is a quick way to start an experiment. The source code is usually small; copied environments, models, test data, and build artifacts are not.
+
+Keep every experiment self-contained while unchanged files share storage. Use **Make separate** before editing a shared file in place.
+
+## Downloads, installers, and archives
+
+Download folders collect repeated `.zip`, `.tar`, `.dmg`, `.pkg`, model, and dataset files, often under different names. These are good candidates because they rarely change.
+
+Add the archive folders as they are. Disk Saver keeps their structure and only offers exact matches.
+
+## Datasets and media libraries
+
+Training data, stock assets, sound libraries, textures, footage, and exports often get copied into several projects.
+
+Deduplicate finalized or read-only assets. Keep databases, active project files, and media that an editor rewrites separate. If needed, use **Make separate** before editing.
+
+## Build farms and development caches
+
+Branches and apps can repeat entire dependency trees and toolchains. Start with a **100 MB** or **500 MB** scan to catch the large native binaries, then lower the limit if the extra scan time is worthwhile.
+
+## Portable workspaces on external SSDs
+
+An SSD may hold several self-contained AI workspaces. Add its folders and deduplicate files within that drive. The paths remain portable and the space is saved on the SSD.
+
+The drive must use a filesystem that supports hardlinks. FAT-family filesystems generally do not.
+
+## Find duplicates without changing them
+
+You can also use Disk Saver as an inventory. Scan, search, compare paths, and inspect exclusions without deduplicating anything. This can uncover accidental downloads, explain why a migration doubled in size, or show which app owns a large file.
+
+## Clean up after uninstalling apps
+
+Deleting an app removes its folder and model paths. If another app still links to the same content, that app keeps working. After the final app path is gone, the verified private link may appear under **Unused files** for cleanup.
+
+You stay in control of that last deletion, and Activity records it.
+
 
 
 # How Disk Saver works

@@ -44,7 +44,7 @@ Existing solutions generally follow one of three patterns:
 ### Automated sharing systems
 
 - **Requires Work:** They encode domain-specific knowledge, such as recognized model categories, known application directories, or library-specific caches. **This means their reach is limited to rules implemented by developers**, so every new application, file category, or ecosystem requires another integration.
-- **Domain Specific:** Because their scope ends at the environment they manage, you can't save disk space OUTSIDE of the environment the system has control over. These systems do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools. (For example, if you have a Qwen model downloaded in LM Studio, and a self-contained web app that packages the same Qwen model in the app, you can't deduplicate between the two.
+- **Domain Specific:** Because their scope ends at the environment they manage, you can't save disk space OUTSIDE of the environment the system has control over. These systems do not compare files inside that environment with unrelated software, global environments, or folders managed by other tools. (For example, if you have a Qwen model downloaded in LM Studio, and a self-contained web app that packages the same Qwen model in the app, you can't deduplicate between the two (The whole point of LM Studio's model management system is to **avoid duplicate model files** by storing them in a **centralized library**, and it does not care about anything outside of it).
 
 ## The Solution
 
@@ -57,7 +57,7 @@ Pinokio Disk Saver takes a new, different approach. Every app keeps its own file
 3. **System-wide Deduplication:** You can deduplicate ANY folder on your computer. Deduplication is not bounded by the software Pinokio manages. User-added locations on the same drive can share identical files with Pinokio or with one another, including a global Conda environment, an LM Studio model library, a Ollama model library, models embedded in standalone llama.cpp applications, or even your entire user home folder.
 4. **Autoscan (Mac & Windows):** Thanks to vertical integration with Pinokio's runtime and scripting, the deduplication scanning can kick in and notify you only when it matters. You don't even have to keep manually running scans. Every time you run an app, Autoscan checks files created or changed by the app after it stops. Do nothing and keep your file system as optimized as possible. Any app launched in pinokio benefits from autoscan.
 
-Because of its flexibility and general purpose nature, it can recover hundreds of gigabytes or even terabytes of disk space.
+Because of its flexibility and general purpose nature, it can recover hundreds of gigabytes or even terabytes of disk space on your machine. You would be shocked to find out how much disk space you've been wasting, you will find duplicate files you don't even remember.
 
 
 ## What it looks like
@@ -103,15 +103,17 @@ These screenshots are from Pinokio 8.1. Your file names, counts, and storage tot
 
 In Pinokio's left sidebar, find the **Manage** section and click **Disk Saver**. Choose a minimum file size and start the scan. A larger minimum is faster; a smaller one may find more savings.
 
-You can scan **All files, 1 MB+, 10 MB+, 50 MB+, 100 MB+, 500 MB+, or 1 GB+**. Empty files are ignored.
+You can scan **10 MB+, 50 MB+, 100 MB+, 500 MB+, or 1 GB+**. The 10 MB minimum avoids sharing ordinary source, configuration, and other small files that are more likely to be edited in place. Empty files are ignored.
 
 ![Annotated first Disk Saver scan controls](media/annotated/p81-01-first-scan-annotated.png)
 
-- Start a scan and watch its progress.
-- Cancel it, then start again.
-- Change the minimum size and run another scan.
-- If a path cannot be read, the rest of the scan should finish and an exclusions notice should appear.
-- Scanning alone should not link, replace, or delete anything.
+> **Try**
+>
+> - Start a scan and watch its progress.
+> - Cancel it, then start again.
+> - Change the minimum size and run another scan.
+> - If a path cannot be read, the rest of the scan should finish and an exclusions notice should appear.
+> - Scanning alone should not link, replace, or delete anything.
 
 ## 2. Understand the result views
 

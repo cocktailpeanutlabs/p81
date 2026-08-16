@@ -12,6 +12,8 @@ section_nav_depth: 2
 
 # Pinokio 8.1: Universal Disk Saver
 
+> [Download Pinokio](https://desktop.pinokio.co/)
+
 ## What problem does it solve?
 
 As we install a lot of AI apps we get inundated with a lot of redundant files:
@@ -92,7 +94,6 @@ So what exactly does it mean by "duplicate", and what does it mean when you "ded
 4. **Deduplication** and **Make separate** can be safely reverted. Once you deduplicate a file, you can "Make separate" to separate the deduplicate entity back to independent files.
 
 
-[Download Pinokio](https://desktop.pinokio.co/)
 
 # Features
 

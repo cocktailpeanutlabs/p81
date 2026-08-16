@@ -268,9 +268,11 @@ Run the global scan first so Pinokio has a verified set of files to compare agai
 
 Set an app's Disk Saver control to **Auto** or **Manual**. In Auto mode, Pinokio watches which files the app changes, then checks eligible files after the app stops.
 
-If it finds verified duplicates, the control shows **New**. Opening the result clears that indicator. Auto mode never deduplicates by itself. You still review the files and choose the action.
-
 ![Annotated Automatic and Manual checking menu inside an app's Disk Saver page](media/annotated/p81-11-auto-checking-annotated.png)
+
+When Autoscan finds a new verified match to review, a red **New** badge appears beside **Disk Saver** in the app sidebar. The badge is only a notification: Auto mode never deduplicates files by itself. Open Disk Saver to inspect the result and choose whether to act. Once you open the new result, Pinokio marks it reviewed and clears the badge.
+
+![Annotated New badge shown after Autoscan finds something to review](media/annotated/p81-11-autoscan-new-badge-annotated.png)
 
 > **What to test**
 >
@@ -455,4 +457,3 @@ No. Deduplication saves local space; it does not create an independent copy. Kee
 ## Can I stop using Disk Saver?
 
 Yes. Use **Make separate** for files that should become independent. Removing an added location stops tracking it but does not delete its files.
-

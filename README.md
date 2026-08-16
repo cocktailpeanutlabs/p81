@@ -107,7 +107,7 @@ You can scan **10 MB+, 50 MB+, 100 MB+, 500 MB+, or 1 GB+**. The 10 MB minimum a
 
 ![Annotated first Disk Saver scan controls](media/annotated/p81-01-first-scan-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Start a scan and watch its progress.
 > - Cancel it, then start again.
@@ -131,7 +131,7 @@ Use Search, status and location filters, and the **Folders / Files** switch to n
 
 ![Annotated Disk Saver result views and filters](media/annotated/p81-02-result-views-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Open every view and compare its count with the files shown.
 > - Search for part of a file or folder name.
@@ -150,7 +150,7 @@ The numbers update after each action. It is normal for the logical file total to
 
 ![Annotated Disk Saver scan summary](media/annotated/p81-03-scan-summary-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Note all three values.
 > - Deduplicate one test file. **Saved** should rise while **Can save** falls.
@@ -164,7 +164,7 @@ Every path stays in place. Pinokio replaces only the redundant storage with a ha
 
 ![Annotated file selection and Deduplicate action](media/annotated/p81-04-deduplicate-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Select one disposable duplicate first.
 > - The button should show the selection count and expected savings.
@@ -180,7 +180,7 @@ Matching contents are not enough. Files must also have compatible permissions, o
 
 ![Annotated Cannot deduplicate view and reason](media/annotated/p81-05-cannot-deduplicate-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - This view should have no bulk Deduplicate action.
 > - Every row should give a reason.
@@ -195,7 +195,7 @@ Use it before editing a file in place, making an independent archive, or simply 
 
 ![Annotated Deduplicated view and Make separate action](media/annotated/p81-06-make-separate-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Make one disposable deduplicated file separate.
 > - Its path and checksum should stay the same.
@@ -211,7 +211,7 @@ Cleanup is conservative: Pinokio only removes an unchanged private link when its
 
 ![Annotated Unused files view](media/annotated/p81-07-unused-files-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - If unused links exist, review their count and reclaimable size.
 > - Clean up one, then try **Clean up all**.
@@ -226,7 +226,7 @@ Removing a location from Disk Saver only stops tracking it. It does not delete t
 
 ![Annotated Add folder controls](media/annotated/p81-08-add-folder-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Add a small folder with disposable duplicates.
 > - Scan and find it under Other folders.
@@ -241,7 +241,7 @@ After the global scan, choose **Add**, then **Find more savings**, to search you
 
 Disk saver cannot cross filesystems. Files on an external SSD can share space with each other, but not with a file on the internal drive.
 
-> **Try**
+> ** What to test**
 >
 > - Search Home. Locations already managed by Disk Saver should be skipped.
 > - Cancel a search. Nothing should be added.
@@ -257,7 +257,7 @@ Run the global scan first so Pinokio has a verified set of files to compare agai
 
 ![Annotated Disk Saver page inside the openDAW app](media/annotated/p81-10-app-scan-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Open an app, choose Disk Saver, and scan it.
 > - Change its minimum-size setting.
@@ -272,7 +272,7 @@ If it finds verified duplicates, the control shows **New**. Opening the result c
 
 ![Annotated Automatic and Manual checking menu inside an app's Disk Saver page](media/annotated/p81-11-auto-checking-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Switch between Auto and Manual, then reopen the app page.
 > - In Auto mode, let the app create or download a large duplicate and then stop it.
@@ -288,7 +288,7 @@ Activity is not an undo button. Use **Make separate** to reverse deduplication. 
 
 ![Annotated Disk Saver Activity tab, search box, and history entry](media/annotated/p81-12-activity-annotated.png)
 
-> **Try**
+> ** What to test**
 >
 > - Deduplicate a file, make it separate, and clean up an unused file. Confirm each completed action appears in Activity.
 > - Search Activity, leave the page, and come back. The entries should remain.

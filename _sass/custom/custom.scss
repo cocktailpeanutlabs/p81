@@ -92,6 +92,14 @@ body {
   color: #6f7177;
 }
 
+.main-content blockquote {
+  border-left: 20px solid #D7FF40;
+  padding: 1px 20px;
+}
+.main-content blockquote strong {
+  font-size: 20px;
+}
+
 @media (min-width: 50rem) {
   .main-content h1:first-of-type {
     font-size: 3rem;

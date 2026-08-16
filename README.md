@@ -48,20 +48,25 @@ Existing solutions generally follow one of three patterns:
 
 Pinokio Disk Saver takes a new, different approach. Every app keeps its own files and folder structure, while byte-identical files share one physical copy underneath (achieved using a [content addressable file system](https://en.wikipedia.org/wiki/Content-addressable_storage))
 
+1. **General purpose deduplication:** Disk Saver does not need to understand models, packages, runtimes, applications, folder conventions, file locations, or symbolic links. There is no special domain specific logic. It only verifies whether files are byte-identical. New file types, frameworks, and ecosystems require no additional deduplication logic.
+2. **Zero configuration, Zero convention:** No central `models` folder or shared cache is required. No need to configure anything. Files remain exactly at the paths where their apps created them. Much easier to understand what's going on, while still taking advantage of deduplication.
+3. **Deduplicate any folder:** Deduplication is not bounded by the software Pinokio manages. User-added locations on the same drive can share identical files with Pinokio or with one another, including a global Conda environment, an LM Studio model library, a Ollama model library, models embedded in standalone llama.cpp applications, or even your entire user home folder.
+4. **Autoscan (Mac & Windows):** You don't even have to manually run scans. Every time you run an app, Autoscan checks files created or changed by the app after it stops. Do nothing and keep your file system as optimized as possible.
+
+Because of its flexibility and general purpose nature, it can recover hundreds of gigabytes or even terabytes of disk space.
+
+![saved](media/saved.png)
+
+
+## How to use
+
 ![Disk Saver overview showing saved space, potential savings, locations, and file status](media/p81-01-global-overview.jpg)
 
 1. **Scan for potential saves:** Safely scan any folder to find potential disk space you can save by deduplicating.
-2. **1-Click Deduplication:** Once you discover duplicate files, just click once to deduplicate them, and instantly free up your disk space.
-3. **General purpose deduplication:** Disk Saver does not need to understand models, packages, runtimes, applications, folder conventions, file locations, or symbolic links. There is no special domain specific logic. It only verifies whether files are byte-identical. New file types, frameworks, and ecosystems require no additional deduplication logic.
-4. **Zero configuration, Zero convention:** No central `models` folder or shared cache is required. No need to configure anything. Files remain exactly at the paths where their apps created them. Much easier to understand what's going on, while still taking advantage of deduplication.
-5. **Deduplicate any folder:** Deduplication is not bounded by the software Pinokio manages. User-added locations on the same drive can share identical files with Pinokio or with one another, including a global Conda environment, an LM Studio model library, a Ollama model library, models embedded in standalone llama.cpp applications, or even your entire user home folder.
-6. **Safe & Reversible:** Any deduplicated file can be restored to an independent copy with **Make separate**, which will recreate the duplicate files in the exact same locations.
-7. **Reference-aware cleanup:** Deleting one app does not affect files still used by other apps. If you have 3 apps that use the same model file, after the final app that uses the model is deleted, Disk Saver lists the data under **Unused files** for cleanup (similar to "Recycle Bin" on Windows or "Trash" on Macs).
-8. **Autoscan (Mac & Windows):** You don't even have to manually run scans. Every time you run an app, Autoscan checks files created or changed by the app after it stops. Do nothing and keep your file system as optimized as possible.
+2. **Deduplicate with 1-click:** Once you discover duplicate files, just click once to deduplicate them, and instantly free up your disk space.
+3. **Safe & Reversible:** Any deduplicated file can be restored to an independent copy with **Make separate**, which will recreate the duplicate files in the exact same locations.
+4. **Reference-aware cleanup:** Deleting one app does not affect files still used by other apps. If you have 3 apps that use the same model file, after the final app that uses the model is deleted, Disk Saver lists the data under **Unused files** for cleanup (similar to "Recycle Bin" on Windows or "Trash" on Macs).
 
-This can recover hundreds of gigabytes or even terabytes of disk space.
-
-![saved](media/saved.png)
 
 
 ## How it works

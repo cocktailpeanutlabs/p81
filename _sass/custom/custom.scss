@@ -94,10 +94,14 @@ body {
 
 .main-content blockquote {
   border-left: 20px solid #D7FF40;
-  padding: 1px 20px;
+  padding: 15px 20px;
+}
+.main-content blockquote p {
+  margin: 0;
 }
 .main-content blockquote strong {
   font-size: 20px;
+  text-transform: uppercase;
 }
 
 @media (min-width: 50rem) {

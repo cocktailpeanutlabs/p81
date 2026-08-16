@@ -131,10 +131,12 @@ Use Search, status and location filters, and the **Folders / Files** switch to n
 
 ![Annotated Disk Saver result views and filters](media/annotated/p81-02-result-views-annotated.png)
 
-- Open every view and compare its count with the files shown.
-- Search for part of a file or folder name.
-- Switch between Folders and Files.
-- Choose one location. Its actions should not affect another location.
+> **Try**
+>
+> - Open every view and compare its count with the files shown.
+> - Search for part of a file or folder name.
+> - Switch between Folders and Files.
+> - Choose one location. Its actions should not affect another location.
 
 ## 3. Read the scan summary
 
@@ -148,9 +150,11 @@ The numbers update after each action. It is normal for the logical file total to
 
 ![Annotated Disk Saver scan summary](media/annotated/p81-03-scan-summary-annotated.png)
 
-- Note all three values.
-- Deduplicate one test file. **Saved** should rise while **Can save** falls.
-- Make it separate again. The values should move back.
+> **Try**
+>
+> - Note all three values.
+> - Deduplicate one test file. **Saved** should rise while **Can save** falls.
+> - Make it separate again. The values should move back.
 
 ## 4. Deduplicate one or many files
 
@@ -160,11 +164,13 @@ Every path stays in place. Pinokio replaces only the redundant storage with a ha
 
 ![Annotated file selection and Deduplicate action](media/annotated/p81-04-deduplicate-annotated.png)
 
-- Select one disposable duplicate first.
-- The button should show the selection count and expected savings.
-- After deduplicating, both paths should still exist and their checksums should match the originals.
-- The file should move to **Deduplicated** and appear in Activity.
-- A location-level action should not touch other locations.
+> **Try**
+>
+> - Select one disposable duplicate first.
+> - The button should show the selection count and expected savings.
+> - After deduplicating, both paths should still exist and their checksums should match the originals.
+> - The file should move to **Deduplicated** and appear in Activity.
+> - A location-level action should not touch other locations.
 
 Pinokio may skip a file if it changed after the scan or belongs to a running app. Close the app and scan again.
 
@@ -174,10 +180,12 @@ Matching contents are not enough. Files must also have compatible permissions, o
 
 ![Annotated Cannot deduplicate view and reason](media/annotated/p81-05-cannot-deduplicate-annotated.png)
 
-- This view should have no bulk Deduplicate action.
-- Every row should give a reason.
-- If you see **Try again**, fix the temporary access problem and retry.
-- One unreadable path should not discard the rest of the scan.
+> **Try**
+>
+> - This view should have no bulk Deduplicate action.
+> - Every row should give a reason.
+> - If you see **Try again**, fix the temporary access problem and retry.
+> - One unreadable path should not discard the rest of the scan.
 
 ## 6. Make a file separate again
 
@@ -187,11 +195,13 @@ Use it before editing a file in place, making an independent archive, or simply 
 
 ![Annotated Deduplicated view and Make separate action](media/annotated/p81-06-make-separate-annotated.png)
 
-- Make one disposable deduplicated file separate.
-- Its path and checksum should stay the same.
-- It should no longer share an inode with the other copy.
-- Try a checkbox selection and review the larger-batch confirmation.
-- Look for the separation in Activity.
+> **Try**
+>
+> - Make one disposable deduplicated file separate.
+> - Its path and checksum should stay the same.
+> - It should no longer share an inode with the other copy.
+> - Try a checkbox selection and review the larger-batch confirmation.
+> - Look for the separation in Activity.
 
 ## 7. Clean up unused private links
 
@@ -201,10 +211,12 @@ Cleanup is conservative: Pinokio only removes an unchanged private link when its
 
 ![Annotated Unused files view](media/annotated/p81-07-unused-files-annotated.png)
 
-- If unused links exist, review their count and reclaimable size.
-- Clean up one, then try **Clean up all**.
-- An in-use private link should not be removable.
-- Look for the cleanup in Activity.
+> **Try**
+>
+> - If unused links exist, review their count and reclaimable size.
+> - Clean up one, then try **Clean up all**.
+> - An in-use private link should not be removable.
+> - Look for the cleanup in Activity.
 
 ## 8. Add folders outside Pinokio Home
 
@@ -214,10 +226,12 @@ Removing a location from Disk Saver only stops tracking it. It does not delete t
 
 ![Annotated Add folder controls](media/annotated/p81-08-add-folder-annotated.png)
 
-- Add a small folder with disposable duplicates.
-- Scan and find it under Other folders.
-- Deduplicate only that location.
-- Remove the location. The real folder should still be there.
+> **Try**
+>
+> - Add a small folder with disposable duplicates.
+> - Scan and find it under Other folders.
+> - Deduplicate only that location.
+> - Remove the location. The real folder should still be there.
 
 ## 9. Find more savings elsewhere
 
@@ -227,11 +241,13 @@ After the global scan, choose **Add**, then **Find more savings**, to search you
 
 Disk saver cannot cross filesystems. Files on an external SSD can share space with each other, but not with a file on the internal drive.
 
-- Search Home. Locations already managed by Disk Saver should be skipped.
-- Cancel a search. Nothing should be added.
-- Search another folder and review suggestions before accepting them.
-- On a hardlink-compatible external drive, deduplicate two files on that drive.
-- Cross-drive matches should not offer a Deduplicate action.
+> **Try**
+>
+> - Search Home. Locations already managed by Disk Saver should be skipped.
+> - Cancel a search. Nothing should be added.
+> - Search another folder and review suggestions before accepting them.
+> - On a hardlink-compatible external drive, deduplicate two files on that drive.
+> - Cross-drive matches should not offer a Deduplicate action.
 
 ## 10. Scan one app
 
@@ -241,10 +257,12 @@ Run the global scan first so Pinokio has a verified set of files to compare agai
 
 ![Annotated Disk Saver page inside the openDAW app](media/annotated/p81-10-app-scan-annotated.png)
 
-- Open an app, choose Disk Saver, and scan it.
-- Change its minimum-size setting.
-- Review the Unique / Shared / Can save summary.
-- Deduplicate from this page. Unrelated apps should be untouched.
+> **Try**
+>
+> - Open an app, choose Disk Saver, and scan it.
+> - Change its minimum-size setting.
+> - Review the Unique / Shared / Can save summary.
+> - Deduplicate from this page. Unrelated apps should be untouched.
 
 ## 11. Autoscan
 
@@ -254,11 +272,13 @@ If it finds verified duplicates, the control shows **New**. Opening the result c
 
 ![Annotated Automatic and Manual checking menu inside an app's Disk Saver page](media/annotated/p81-11-auto-checking-annotated.png)
 
-- Switch between Auto and Manual, then reopen the app page.
-- In Auto mode, let the app create or download a large duplicate and then stop it.
-- **New** should appear only after Pinokio finds a verified match.
-- Open the result. **New** should clear.
-- Manual mode should not run the automatic check.
+> **Try**
+>
+> - Switch between Auto and Manual, then reopen the app page.
+> - In Auto mode, let the app create or download a large duplicate and then stop it.
+> - **New** should appear only after Pinokio finds a verified match.
+> - Open the result. **New** should clear.
+> - Manual mode should not run the automatic check.
 
 ## 12. Review Activity and skipped files
 
@@ -268,10 +288,12 @@ Activity is not an undo button. Use **Make separate** to reverse deduplication. 
 
 ![Annotated Disk Saver Activity tab, search box, and history entry](media/annotated/p81-12-activity-annotated.png)
 
-- Deduplicate a file, make it separate, and clean up an unused file. Confirm each completed action appears in Activity.
-- Search Activity, leave the page, and come back. The entries should remain.
-- Scan a harmless unreadable test folder. The exclusions notice should list the path and reason.
-- Cancel a long action. Unfinished files should not appear as successful Activity entries.
+> **Try**
+>
+> - Deduplicate a file, make it separate, and clean up an unused file. Confirm each completed action appears in Activity.
+> - Search Activity, leave the page, and come back. The entries should remain.
+> - Scan a harmless unreadable test folder. The exclusions notice should list the path and reason.
+> - Cancel a long action. Unfinished files should not appear as successful Activity entries.
 
 
 # Use cases

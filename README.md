@@ -416,20 +416,6 @@ Before changing a path, Disk Saver checks it again. It skips files that changed 
 
 Actions use temporary files and atomic replacement where possible. Completed work appears in Activity; failed or unprocessed files stay visible and untouched.
 
-# What to deduplicate
-
-| Strong candidates | Keep separate or use caution |
-|---|---|
-| Models and checkpoints | Databases and virtual disks |
-| Installers and archives | Logs and frequently rewritten caches |
-| Python wheels and native libraries | Active files edited in place |
-| Runtime and browser binaries | Independent backup copies |
-| Finalized datasets and media | Files on different drives |
-| Old app or Pinokio Home copies | Similar files whose bytes differ |
-
-Files must match exactly. Two models with the same architecture, two videos that look identical, or two archives containing the same files do not qualify unless every byte matches.
-
-
 # Frequently asked questions
 
 ## Does Disk Saver delete duplicate files?
@@ -470,8 +456,3 @@ No. Deduplication saves local space; it does not create an independent copy. Kee
 
 Yes. Use **Make separate** for files that should become independent. Removing an added location stops tracking it but does not delete its files.
 
-# Feedback
-
-When reporting a problem, include your operating system, filesystem, minimum file size, the affected view, any reason shown, and whether the source app was running. Screenshots of the exclusions notice or Activity entry are helpful.
-
-Join the [Pinokio Discord](https://discord.gg/TQdNwadtE4) or follow [Pinokio updates](https://x.com/cocktailpeanut).

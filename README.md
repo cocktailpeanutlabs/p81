@@ -51,8 +51,8 @@ Existing solutions generally follow one of three patterns:
 Pinokio Disk Saver takes a new, different approach. Every app keeps its own files and folder structure, while byte-identical files share one physical copy underneath (achieved using a [content addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage))
 
 1. **General deduplication:** Existing deduplication schemes are uusually domain specific--only deduplicate AI model files, etc.--Pinokio Disk Saver is designed to be general purpose. Not just AI models, but NPM dependency files, PIP dependency files, LIB files, DLL files, commonly used binary files (.exe, etc.), pretty much anything. This is because Disk Saver does not need to understand models, packages, runtimes, applications, folder conventions, file locations, or symbolic links. There is no special domain specific logic. It only verifies whether files are byte-identical. New file types, frameworks, and ecosystems require no additional deduplication logic.
-2. **Zero configuration, Zero convention:** Because the deduplication is achieved through hashing, it's purely content based. Even if two files have different file names they can still be deduplicated, while preserving their existing paths. No central `models` folder or shared cache is required. No need to configure anything. Files remain exactly at the paths where their apps created them. Much easier to understand what's going on, while still taking advantage of deduplication.
-3. **System-wide Deduplicater:** You can deduplicate ANY folder on your computer. Deduplication is not bounded by the software Pinokio manages. User-added locations on the same drive can share identical files with Pinokio or with one another, including a global Conda environment, an LM Studio model library, a Ollama model library, models embedded in standalone llama.cpp applications, or even your entire user home folder.
+2. **Zero configuration, Zero convention:** Deduplication is purely content based. Even if two files have different file names they can still be deduplicated, while preserving their existing paths. No central `models` folder or shared cache is required. No need to configure anything. Files remain exactly at the paths where their apps created them. Much easier to understand what's going on, while still taking advantage of deduplication.
+3. **System-wide Deduplication:** You can deduplicate ANY folder on your computer. Deduplication is not bounded by the software Pinokio manages. User-added locations on the same drive can share identical files with Pinokio or with one another, including a global Conda environment, an LM Studio model library, a Ollama model library, models embedded in standalone llama.cpp applications, or even your entire user home folder.
 4. **Autoscan (Mac & Windows):** Thanks to vertical integration with Pinokio's runtime and scripting, the deduplication scanning can kick in and notify you only when it matters. You don't even have to keep manually running scans. Every time you run an app, Autoscan checks files created or changed by the app after it stops. Do nothing and keep your file system as optimized as possible. Any app launched in pinokio benefits from autoscan.
 
 Because of its flexibility and general purpose nature, it can recover hundreds of gigabytes or even terabytes of disk space.
@@ -64,19 +64,27 @@ Because of its flexibility and general purpose nature, it can recover hundreds o
 
 1. **Scan for potential saves:** Safely scan any folder to find potential disk space you can save by deduplicating.
 2. **Deduplicate with 1-click:** Once you discover duplicate files, just click once to deduplicate them, and instantly free up your disk space.
-3. **Safe & Reversible:** Any deduplicated file can be restored to an independent copy with **Make separate**, which will recreate the duplicate files in the exact same locations.
+3. **Roll back to duplicate with 1-click:** Any deduplicated file can be restored to an independent copy with **Make separate**, which will recreate the duplicate files in the exact same locations.
 4. **Reference-aware cleanup:** Deleting one app does not affect files still used by other apps. If you have 3 apps that use the same model file, after the final app that uses the model is deleted, Disk Saver lists the data under **Unused files** for cleanup (similar to "Recycle Bin" on Windows or "Trash" on Macs).
 
 
 
-## How it works
+## How scanning works
 
-1. By default, it scans everything inside your Pinokio home. Run a global scan and it will find all the redundant files scattered across your apps. Then, you can deduplicate them all with 1-click.
-2. Additionally, you can even add model libraries, caches, old Pinokio Homes, project folders, and other locations on your computer.
-3. Each app keeps its usual files and paths. If two apps have the same model, those paths can share disk space.
-4. If you have 5 same files deduplicated into one entity, deleting one of them simply removes the pointer that points to the deduplicated entity. The rest 4 locations work fine. Only after you delete ALL 5 references of the deduplicated files, you get the option to "clean up", which can be used to completely clean up the space. 
+1. **Pinokio Home Scan:** By default, it scans everything inside your Pinokio home. Run a global scan and it will find all the redundant files scattered across your apps. Then, you can deduplicate them all with 1-click.
+2. **App-specific Scan:** You can also scan and deduplicate for each app.
+3. **System-wide Scan:** You are not limited to Pinokio. You can scan your entire computer. You can even add model libraries, caches, old Pinokio Homes, project folders, and any other locations on your computer.
 
-## Is it safe?
+## How deduplication works
+
+So what exactly does it mean by "duplicate", and what does it mean when you "deduplicate"?
+
+1. **Duplicates:** Duplicates mean there are multiple files on your computer that have the exact same bytes. Multiple files can have different file names and paths but as long as they have the same content, they are "duplicates".
+2. **Deduplication:** When you deduplicate, the deduplicated file names still exist at the locations. But internally they are linking to one disk space (inode).
+3. **Deletion:** Let's say you have 5 duplicate files and you deduplicated. This leads to 5 file paths all pointing to the same underlying disk space (inode). When you delete one of them, it removes that reference and won't show up on the file explorer anymore. However the underlying disk space still exists. You can keep deleting the rest of the 4 locations, and ONLY after you've deleted ALL 5 references, you will get the option to "clean up".
+4. **Clean up:** Once you remove all 5 duplicates, now you can finally delete the actual underlying disk space. This will show up inside the "Unused files" tab. You can remove them with 1-click. This is similar to "Empty trash" (mac) or "Empty recycle bin" (windows)
+
+## How safe is it?
 
 1. **Scan** is read-only, and 100% safe.
 2. Deduplication is **precisely based on content.** Files are deduplicated only when their contents are exactly identical. Matching filenames or locations are not enough.

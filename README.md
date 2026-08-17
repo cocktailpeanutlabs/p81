@@ -354,12 +354,6 @@ A model may exist in the Hugging Face cache and again inside several apps. Add t
 
 Use this when symlinks confuse an installer or an app insists on its own path.
 
-## Forks, worktrees, and experiments
-
-Copying a working project is a quick way to start an experiment. The source code is usually small; copied environments, models, test data, and build artifacts are not.
-
-Keep every experiment self-contained while unchanged files share storage. Use **Make separate** before editing a shared file in place.
-
 ## Downloads, installers, and archives
 
 Download folders collect repeated `.zip`, `.tar`, `.dmg`, `.pkg`, model, and dataset files, often under different names. These are good candidates because they rarely change.

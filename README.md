@@ -12,7 +12,7 @@ section_nav_depth: 2
 
 # Pinokio Disk Saver
 
-> DOWNLOAD LATEST BETA: [v8.0.100](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.100)
+> DOWNLOAD LATEST BETA: [v8.0.101](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.101)
 
 ## What problem does it solve?
 

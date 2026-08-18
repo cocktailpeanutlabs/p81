@@ -459,8 +459,6 @@ Yes. Use **Make separate** for files that should become independent. Removing an
 
 
 
----
-
 
 # Versions
 

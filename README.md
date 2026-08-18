@@ -12,7 +12,12 @@ section_nav_depth: 2
 
 # Pinokio Disk Saver
 
-> DOWNLOAD LATEST BETA: [v8.0.100](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.100)
+> DOWNLOAD LATEST BETA: [v8.0.105](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.105)
+
+Versions
+
+- [8.0.100](#v100)
+- [8.0.105](#v105)
 
 ## What problem does it solve?
 
@@ -451,3 +456,30 @@ No. Deduplication saves local space; it does not create an independent copy. Kee
 ## Can I stop using Disk Saver?
 
 Yes. Use **Make separate** for files that should become independent. Removing an added location stops tracking it but does not delete its files.
+
+
+
+---
+
+
+# Versions
+
+## v100
+
+Initial release
+
+## v105
+
+https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.105
+
+clean up after separating, and show real file locations
+
+- Separating now frees the store copy nothing links to, instead of leaving it behind and prompting a cleanup that blames files the user never deleted
+- Free before reclassifying, so a reference survives and deduplicating again works without a rescan
+- Expanding a file row loads its real locations instead of reusing the two samples fetched for the Matches column; drops "N of M locations shown"
+- Locations resolve by shared storage for deduplicated rows and by content elsewhere, and close when an action or scan changes the grouping
+- App workspaces list every location as context but still act only on their own files
+- Rename the Unused files view to Trash (Empty Trash, Delete) and drop the private-link wording it needed to explain itself
+- Tests for separate cleanup, registry state after it, location identity, app scope, and the Trash copy
+
+

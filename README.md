@@ -12,12 +12,13 @@ section_nav_depth: 2
 
 # Pinokio Disk Saver
 
-> DOWNLOAD LATEST BETA: [v8.0.105](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.105)
+> DOWNLOAD LATEST BETA: [v8.0.108](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.108)
 
 Versions
 
 - [8.0.100](#v100)
 - [8.0.105](#v105)
+- [8.0.108](#v108)
 
 ## What problem does it solve?
 
@@ -481,3 +482,8 @@ clean up after separating, and show real file locations
 - Tests for separate cleanup, registry state after it, location identity, app scope, and the Trash copy
 
 
+## v108
+
+Duplicate files are displayed in a more intuitive manner and now surfable.
+
+![surf](media/surf.png)

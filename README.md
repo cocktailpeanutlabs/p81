@@ -12,13 +12,14 @@ section_nav_depth: 2
 
 # Pinokio Disk Saver
 
-> DOWNLOAD LATEST BETA: [v8.0.108](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.108)
+> DOWNLOAD LATEST BETA: [v8.0.112](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.112)
 
 Versions
 
 - [8.0.100](#v100)
 - [8.0.105](#v105)
 - [8.0.108](#v108)
+- [8.0.112](#v112)
 
 ## What problem does it solve?
 
@@ -487,3 +488,26 @@ clean up after separating, and show real file locations
 Duplicate files are displayed in a more intuitive manner and now surfable.
 
 ![surf](media/surf.png)
+
+## v112
+
+**1. Folder size fix:** Folder sizes were wrong. A folder only added up whichever 500 files happened to be loaded, so on a 48,000-file app the number meant nothing. The database adds up the whole folder now, and the tree loads a level at a time as you open it
+
+
+**2. Sort by name & size:** You can sort a level by name or size, either direction. Sorting by size mixes loose files in with the folders, since a big file hiding under small folders isn't what you asked for. Sorting by name keeps folders on top like a file browser
+
+
+![sort](media/sort.png)
+
+
+**3. Search filename fix:** Searching in Files mode looks at the file name. Before it matched the whole path, so typing a folder name gave you every file inside it and the results looked random, because the list only shows file names
+
+![search](media/search.png)
+
+**File navigation fix:** Clicking a copy in another app now opens that app's folder tree, opens the folders down to the file and highlights it. It used to drop you in a filtered duplicates list on a view you weren't looking at
+
+![navigate](media/navigate.png)
+
+**Proper nested folder navigation:** The tree only indented two levels, so anything deeper lined up with its parent and you couldn't see what was inside what. It indents properly now, and folder and file names start in the same place
+
+![explore](media/explore.png)

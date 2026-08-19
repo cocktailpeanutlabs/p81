@@ -491,6 +491,8 @@ Duplicate files are displayed in a more intuitive manner and now surfable.
 
 ## v112
 
+> [DOWNLOAD v8.0.112](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.112)
+
 **1. Folder size fix:** Folder sizes were wrong. A folder only added up whichever 500 files happened to be loaded, so on a 48,000-file app the number meant nothing. The database adds up the whole folder now, and the tree loads a level at a time as you open it
 
 

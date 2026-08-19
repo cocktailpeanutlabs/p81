@@ -12,7 +12,7 @@ section_nav_depth: 2
 
 # Pinokio Disk Saver
 
-> DOWNLOAD LATEST BETA: [v8.0.112](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.112)
+> DOWNLOAD LATEST BETA: [v8.0.114](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.114)
 
 Versions
 
@@ -20,6 +20,7 @@ Versions
 - [8.0.105](#v105)
 - [8.0.108](#v108)
 - [8.0.112](#v112)
+- [8.0.114](#v114)
 
 ## What problem does it solve?
 
@@ -513,3 +514,10 @@ Duplicate files are displayed in a more intuitive manner and now surfable.
 **Proper nested folder navigation:** The tree only indented two levels, so anything deeper lined up with its parent and you couldn't see what was inside what. It indents properly now, and folder and file names start in the same place
 
 ![explore](media/explore.png)
+
+## v114
+
+> [DOWNLOAD v8.0.114](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.114)
+
+- footer is fixed position now
+- you can now sort by name in "duplicates" tab (folders view)

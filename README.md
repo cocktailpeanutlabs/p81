@@ -12,7 +12,7 @@ section_nav_depth: 2
 
 # Pinokio Disk Saver
 
-> DOWNLOAD LATEST BETA: [v8.0.117](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.117)
+> DOWNLOAD LATEST BETA: [v8.0.118](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.118)
 
 Versions
 
@@ -23,6 +23,7 @@ Versions
 - [8.0.114](#v114)
 - [8.0.116](#v116)
 - [8.0.117](#v117)
+- [8.0.118](#v118)
 
 ## What problem does it solve?
 
@@ -535,3 +536,9 @@ Duplicate files are displayed in a more intuitive manner and now surfable.
 > [DOWNLOAD v8.0.117](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.117)
 
 - Sort fix 2
+
+## v118
+
+> [DOWNLOAD v8.0.118](https://github.com/peanutcocktail/pinokio/releases/tag/v8.0.118)
+
+- Sort fix 3
